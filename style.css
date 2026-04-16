@@ -47,6 +47,12 @@ body {
     margin-top: 40px;
 }
 
+.comment-section {
+    margin-top: 40px;
+    text-align: left;
+    padding-bottom: 3rem;
+}
+
 .form-group {
     margin-bottom: 15px;
 }
