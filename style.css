@@ -21,6 +21,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -28,6 +29,7 @@ body {
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
     margin: 0;
+    padding: 40px 0;
 }
 
 .container {
@@ -36,6 +38,50 @@ body {
     background-color: var(--container-bg);
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.contact-section {
+    margin-top: 40px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--number-border);
+    border-radius: 8px;
+    background-color: var(--number-bg);
+    color: var(--text-color);
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+#submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: filter 0.3s;
+}
+
+#submit-btn:hover {
+    filter: brightness(0.9);
 }
 
 .lotto-numbers {
