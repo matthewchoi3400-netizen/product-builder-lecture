@@ -41,3 +41,43 @@ generateBtn.addEventListener('click', () => {
         }, index * 100);
     });
 });
+
+// Animal Face Test Logic (Teachable Machine)
+const ANIMAL_URL = "https://teachablemachine.withgoogle.com/models/2bWrPxNKA/";
+let animalModel, animalWebcam, animalLabelContainer, animalMaxPredictions;
+
+async function initAnimalTest() {
+    document.getElementById('start-webcam-btn').style.display = 'none';
+    const modelURL = ANIMAL_URL + "model.json";
+    const metadataURL = ANIMAL_URL + "metadata.json";
+
+    animalModel = await tmImage.load(modelURL, metadataURL);
+    animalMaxPredictions = animalModel.getTotalClasses();
+
+    const flip = true;
+    animalWebcam = new tmImage.Webcam(200, 200, flip);
+    await animalWebcam.setup();
+    await animalWebcam.play();
+    window.requestAnimationFrame(animalLoop);
+
+    document.getElementById("webcam-container").appendChild(animalWebcam.canvas);
+    animalLabelContainer = document.getElementById("label-container");
+    for (let i = 0; i < animalMaxPredictions; i++) {
+        animalLabelContainer.appendChild(document.createElement("div"));
+    }
+}
+
+async function animalLoop() {
+    animalWebcam.update();
+    await animalPredict();
+    window.requestAnimationFrame(animalLoop);
+}
+
+async function animalPredict() {
+    const prediction = await animalModel.predict(animalWebcam.canvas);
+    for (let i = 0; i < animalMaxPredictions; i++) {
+        const classPrediction =
+            prediction[i].className + ": " + (prediction[i].probability * 100).toFixed(0) + "%";
+        animalLabelContainer.childNodes[i].innerHTML = classPrediction;
+    }
+}

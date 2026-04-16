@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto Number Generator</title>
+    <title>AI Animal Face Test & Lotto</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="theme-toggle">
         <button id="theme-btn">Dark Mode</button>
     </div>
+
+    <div class="container">
+        <h1>AI 동물상 테스트</h1>
+        <p>강아지상? 고양이상? AI가 분석해드립니다!</p>
+        <button type="button" id="start-webcam-btn" onclick="initAnimalTest()">카메라 시작하기</button>
+        <div id="webcam-container"></div>
+        <div id="label-container"></div>
+    </div>
+
     <div class="container">
         <h1>Lotto Number Generator</h1>
         <div class="lotto-numbers">
@@ -41,16 +50,18 @@
 
     <div class="container comment-section">
         <div id="disqus_thread"></div>
-        <script>
-            (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = 'https://productbuilder-shigdhky5z.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
+    <script>
+        (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://productbuilder-shigdhky5z.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
 </body>
 </html>
