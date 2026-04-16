@@ -9,6 +9,17 @@ const loadingSpinner = document.getElementById('loading-spinner');
 const backToTop = document.getElementById('back-to-top');
 const langSelect = document.getElementById('lang-select');
 
+// TTS Elements
+const ttsInput = document.getElementById('tts-input');
+const ttsExecuteBtn = document.getElementById('tts-execute-btn');
+const ttsPlayBtn = document.getElementById('tts-play-btn');
+const ttsDownloadBtn = document.getElementById('tts-download-btn');
+const ttsStatus = document.getElementById('tts-status');
+const ttsAudio = document.getElementById('tts-audio');
+
+let ttsAudioBlob = null;
+let ttsAudioUrl = null;
+
 // Translations
 const translations = {
     ko: {
@@ -18,11 +29,13 @@ const translations = {
         nav_about: "사이트 소개",
         nav_contact: "문의",
         nav_blog: "지식 센터",
+        nav_tts: "TTS 변환",
         hero_title: "당신의 특징과 행운을 분석하는 AI 포털",
         hero_subtitle: "데이터와 인공지능이 제안하는 새로운 경험을 만나보세요.",
         hero_btn_animal: "동물상 테스트",
         hero_btn_lotto: "로또 번호 생성",
         hero_btn_blog: "AI 지식 센터",
+        hero_btn_tts: "TTS 변환",
         animal_title: "AI 동물상 테스트",
         animal_desc: "사진 한 장으로 분석하는 나의 동물상! 강아지, 고양이 중 당신은 어떤 타입일까요? AI가 정밀하게 분석합니다.",
         upload_text: "클릭하여 사진을 업로드하세요",
@@ -41,6 +54,15 @@ const translations = {
         lotto_tip_1: "균형 있는 조합: 홀수와 짝수의 비율을 3:3 또는 2:4 정도로 섞는 것이 통계적으로 안정적입니다.",
         lotto_tip_2: "연속 번호 피하기: 1, 2, 3처럼 3개 이상의 연속 번호가 나올 확률은 매우 낮습니다.",
         lotto_tip_3: "총합의 범위: 선택한 6개 번호의 총합이 100에서 170 사이에 위치하는 경우가 가장 많습니다.",
+        tts_title: "AI 음성 변환 (TTS)",
+        tts_desc: "텍스트를 자연스러운 음성으로 변환해보세요. 입력한 텍스트가 WAV 파일로 생성됩니다.",
+        tts_placeholder: "변환할 내용을 입력하세요...",
+        tts_btn_execute: "TTS 실행",
+        tts_btn_play: "Play",
+        tts_btn_download: "다운로드",
+        tts_status_loading: "음성 파일 생성 중...",
+        tts_status_success: "성공: 음성 파일이 준비되었습니다.",
+        tts_status_error: "API 호출 실패: 서버 연결을 확인하세요.",
         faq_title: "자주 묻는 질문 (FAQ)",
         faq_q1: "Q. 사진 데이터는 안전하게 보호되나요?",
         faq_a1: "A. 네, 본 서비스는 브라우저 기반 AI를 사용합니다. 업로드하신 사진은 서버로 전송되지 않으며, 분석 즉시 메모리에서 삭제됩니다.",
@@ -57,38 +79,7 @@ const translations = {
         footer_home: "홈",
         footer_about: "사이트 소개",
         footer_privacy: "개인정보 처리방침",
-        footer_contact: "문의하기",
-        // About Page
-        about_head_title: "사이트 소개 - AI Portal",
-        about_title: "프로젝트 소개",
-        about_subtitle: "AI Portal은 복잡한 인공지능 기술을 일상 속에서 쉽고 재미있게 경험할 수 있도록 설계된 실험적 포털 사이트입니다.",
-        about_vision_title: "우리의 비전",
-        about_vision_desc: "우리는 기술이 소수의 전문가들만의 전유물이 되어서는 안 된다고 믿습니다. AI Portal은 머신러닝, 확률 통계와 같은 기술적 요소를 직관적인 인터페이스로 풀어내어, 사용자들이 자연스럽게 최신 기술의 혜택을 누릴 수 있는 환경을 제공합니다.",
-        about_services_title: "제공 서비스",
-        about_s1_title: "🤖 AI 동물상 분석",
-        about_s1_desc: "Google의 Teachable Machine을 기반으로 제작된 이미지 분류 모델을 사용하여, 사용자의 외모적 특징을 분석하고 가장 닮은 동물을 찾아줍니다. 브라우저 내 로컬 분석으로 완벽한 프라이버시를 보장합니다.",
-        about_s2_title: "🍀 스마트 로또 생성기",
-        about_s2_desc: "단순한 번호 생성을 넘어, 확률적 통계 데이터를 기반으로 한 최적의 번호 조합 팁과 함께 무작위 번호 추출 기능을 제공합니다.",
-        about_tech_title: "기술적 투명성",
-        about_tech_desc: "AI Portal은 오픈소스 정신을 지향합니다. 본 서비스는 TensorFlow.js, Teachable Machine 등 신뢰할 수 있는 라이브러리를 활용하여 제작되었으며, 모든 데이터 처리는 투명하게 공개된 로직에 따라 수행됩니다.",
-        about_back_btn: "메인 도구 체험하기",
-        footer_text_vision: "© 2024 AI Portal Project. 혁신을 일상으로 연결합니다.",
-        // Privacy Page
-        privacy_head_title: "개인정보 처리방침 - AI Portal",
-        privacy_title: "개인정보 처리방침",
-        privacy_p1: "본 사이트(\"AI Portal\")는 사용자의 개인정보를 소중히 다루며, 관련 법령을 준수합니다.",
-        privacy_h1: "1. 수집하는 개인정보 항목",
-        privacy_p2: "본 사이트는 사용자의 직접적인 개인정보(이름, 연락처 등)를 별도로 저장하거나 수집하지 않습니다. 다만, 구글 애드센스 등 제3자 광고 서비스를 이용하는 경우 쿠키(Cookie)가 사용될 수 있습니다.",
-        privacy_h2: "2. 개인정보의 이용 목적",
-        privacy_p3: "수집된 비개인적 정보(쿠키 등)는 서비스 개선, 사용자 맞춤형 광고 제공, 통계 분석을 위해 사용됩니다.",
-        privacy_h3: "3. 제3자 서비스 (구글 애드센스 등)",
-        privacy_p4: "Google을 포함한 제3자 제공업체는 쿠키를 사용하여 사용자의 이전 웹사이트 방문 기록을 토대로 광고를 게재합니다. 사용자는 구글의 광고 설정을 방문하여 맞춤설정 광고를 해제할 수 있습니다.",
-        privacy_h4: "4. 데이터 보안 (이미지 분석)",
-        privacy_p5: "동물상 테스트를 위해 업로드되는 이미지는 브라우저 상에서 AI 모델(Teachable Machine)을 통해 즉시 분석되며, 서버로 전송되거나 저장되지 않습니다.",
-        privacy_h5: "5. 문의처",
-        privacy_p6: "개인정보 관련 문의사항은 하단의 제휴 문의 폼을 이용해 주시기 바랍니다.",
-        privacy_back_btn: "메인으로 돌아가기",
-        footer_text_privacy: "© 2024 AI Portal Project. All rights reserved."
+        footer_contact: "문의하기"
     },
     en: {
         head_title: "AI Portal - Animal Face Test & Lotto Analysis",
@@ -97,77 +88,57 @@ const translations = {
         nav_about: "About",
         nav_contact: "Contact",
         nav_blog: "Knowledge Center",
+        nav_tts: "TTS Conv",
         hero_title: "AI Portal for Analyzing Your Traits & Luck",
         hero_subtitle: "Experience new insights provided by data and AI.",
         hero_btn_animal: "Animal Test",
         hero_btn_lotto: "Lotto Generator",
         hero_btn_blog: "Knowledge Center",
+        hero_btn_tts: "TTS Conv",
         animal_title: "AI Animal Face Test",
-        animal_desc: "Analyze your face with just one photo! Dog or Cat? Find out your animal type with precision AI.",
+        animal_desc: "Analyze your face with just one photo! Find out your animal type with precision AI.",
         upload_text: "Click to upload your photo",
         loading_text: "AI is analyzing...",
         how_it_works_title: "How does it work? (Deep Learning)",
         how_1_title: "1. Data Training",
-        how_1_desc: "We use a model pre-trained on hundreds of thousands of animal photos using CNN algorithms.",
+        how_1_desc: "Pre-trained on animal photos using CNN algorithms.",
         how_2_title: "2. Feature Extraction",
-        how_2_desc: "Key facial features like eyes, jawline, and nose angle are extracted in real-time.",
+        how_2_desc: "Facial features like eyes and jawline are extracted in real-time.",
         how_3_title: "3. Probability Matching",
-        how_3_desc: "We show the animal type that most closely matches the trained data in percentages (%).",
+        how_3_desc: "Shows the matching animal type in percentages.",
         lotto_title: "Smart Lotto Number Generator",
-        lotto_desc: "Lucky 6 numbers generated through a rigorous random algorithm. Try your luck every week.",
+        lotto_desc: "Lucky 6 numbers generated through a random algorithm.",
         lotto_btn: "Generate Lucky Numbers",
         lotto_tips_title: "Lotto Number Selection Tips",
-        lotto_tip_1: "Balanced Combination: Mixing odd and even numbers in a 3:3 or 2:4 ratio is statistically stable.",
-        lotto_tip_2: "Avoid Consecutive Numbers: The probability of 3 or more consecutive numbers like 1, 2, 3 is very low.",
-        lotto_tip_3: "Sum Range: The total sum of the 6 selected numbers is most often between 100 and 170.",
-        faq_title: "Frequently Asked Questions (FAQ)",
+        lotto_tip_1: "Balanced: Mix odd and even numbers in 3:3 or 2:4.",
+        lotto_tip_2: "Consecutive: Avoid 3 or more consecutive numbers.",
+        lotto_tip_3: "Sum: Total sum often between 100 and 170.",
+        tts_title: "AI Text to Speech (TTS)",
+        tts_desc: "Convert text to natural speech. A WAV file will be generated.",
+        tts_placeholder: "Enter text to convert...",
+        tts_btn_execute: "Execute TTS",
+        tts_btn_play: "Play",
+        tts_btn_download: "Download",
+        tts_status_loading: "Generating audio...",
+        tts_status_success: "Success: Audio file is ready.",
+        tts_status_error: "API failed: Please check server connection.",
+        faq_title: "FAQ",
         faq_q1: "Q. Is my photo data protected?",
-        faq_a1: "A. Yes, this service uses browser-based AI. Your photos are not sent to any server and are deleted immediately after analysis.",
-        faq_q2: "Q. What is the lotto number generation algorithm?",
-        faq_a2: "A. It's based on JavaScript's Math.random() but removes duplicates to generate numbers between 1-45.",
-        contact_title: "Partnership & Suggestions",
-        contact_desc: "Your valuable feedback helps us build a better service.",
-        contact_placeholder_name: "Name or Company",
-        contact_placeholder_email: "Email for reply",
-        contact_placeholder_message: "Please write your suggestions or complaints",
-        contact_btn: "Send Inquiry",
-        comment_title: "Community Feedback",
-        footer_text: "© 2024 AI Portal Project. Providing high-quality info and tools.",
+        faq_a1: "A. Yes, browser-based AI ensures your photos stay local.",
+        faq_q2: "Q. Lotto algorithm?",
+        faq_a2: "A. Based on Math.random() with duplicate removal.",
+        contact_title: "Contact Us",
+        contact_desc: "We value your feedback.",
+        contact_placeholder_name: "Name",
+        contact_placeholder_email: "Email",
+        contact_placeholder_message: "Message",
+        contact_btn: "Send",
+        comment_title: "Feedback",
+        footer_text: "© 2024 AI Portal Project.",
         footer_home: "Home",
         footer_about: "About",
-        footer_privacy: "Privacy Policy",
-        footer_contact: "Contact Us",
-        // About Page
-        about_head_title: "About - AI Portal",
-        about_title: "Project Introduction",
-        about_subtitle: "AI Portal is an experimental portal designed to make complex AI technology easy and fun to experience in daily life.",
-        about_vision_title: "Our Vision",
-        about_vision_desc: "We believe technology shouldn't be for experts only. AI Portal provides an intuitive interface for machine learning and statistics so users can naturally benefit from the latest tech.",
-        about_services_title: "Our Services",
-        about_s1_title: "🤖 AI Animal Analysis",
-        about_s1_desc: "Uses an image classification model built on Google's Teachable Machine to find your animal look-alike. Full privacy with local analysis.",
-        about_s2_title: "🍀 Smart Lotto Generator",
-        about_s2_desc: "Goes beyond simple generation to provide optimal combination tips based on statistical data.",
-        about_tech_title: "Technical Transparency",
-        about_tech_desc: "We value the open-source spirit. This service uses trusted libraries like TensorFlow.js and Teachable Machine.",
-        about_back_btn: "Try Main Tools",
-        footer_text_vision: "© 2024 AI Portal Project. Connecting innovation to daily life.",
-        // Privacy Page
-        privacy_head_title: "Privacy Policy - AI Portal",
-        privacy_title: "Privacy Policy",
-        privacy_p1: "This site (\"AI Portal\") values your privacy and complies with relevant laws.",
-        privacy_h1: "1. Information Collected",
-        privacy_p2: "We do not store or collect personal information (name, contact, etc.). Cookies may be used by third-party ads like Google AdSense.",
-        privacy_h2: "2. Purpose of Use",
-        privacy_p3: "Collected non-personal info is used for service improvement, tailored ads, and statistical analysis.",
-        privacy_h3: "3. Third-party Services",
-        privacy_p4: "Google and other third-party vendors use cookies to serve ads based on prior visits. You can opt out at Google's Ad Settings.",
-        privacy_h4: "4. Data Security",
-        privacy_p5: "Images are analyzed instantly on the browser and are NOT transmitted to or stored on servers.",
-        privacy_h5: "5. Contact",
-        privacy_p6: "For privacy inquiries, please use the contact form at the bottom.",
-        privacy_back_btn: "Back to Home",
-        footer_text_privacy: "© 2024 AI Portal Project. All rights reserved."
+        footer_privacy: "Privacy",
+        footer_contact: "Contact"
     },
     ja: {
         head_title: "AI Portal - 動物顔診断 & ロト番号生成",
@@ -176,77 +147,57 @@ const translations = {
         nav_about: "サイト紹介",
         nav_contact: "お問い合わせ",
         nav_blog: "ナレッジセンター",
-        hero_title: "あなたの特徴と運勢を分析するAIポータル",
-        hero_subtitle: "데이터와 AI가 제안하는 새로운 체험을 만나보세요.",
+        nav_tts: "TTS変換",
+        hero_title: "AIポータル",
+        hero_subtitle: "AIが提案する新しい体験。",
         hero_btn_animal: "動物顔診断",
-        hero_btn_lotto: "ロト番号生成",
-        hero_btn_blog: "AIナ레ッジセンター",
+        hero_btn_lotto: "ロト生成機",
+        hero_btn_blog: "ナレッジセンター",
+        hero_btn_tts: "TTS変換",
         animal_title: "AI 動物顔診断",
-        animal_desc: "写真1枚で分析하는 나의 동물상! 犬、猫のうち、あなたはどのタイプ？AIが精密に分析します。",
-        upload_text: "클릭하여 사진을 업로드하세요",
-        loading_text: "AI가 분석 중입니다...",
-        how_it_works_title: "어떻게 분석되나요? (Deep Learning)",
-        how_1_title: "1. 데이터 학습",
-        how_1_desc: "수십만 장의 동물 사진 데이터를 CNN 알고리즘으로 사전 학습한 모델을 사용합니다.",
-        how_2_title: "2. 특징 추출",
-        how_2_desc: "업로드된 이미지에서 눈매, 턱선, 코의 각도 등 얼굴의 핵심 특징점을 실시간으로 추출합니다.",
-        how_3_title: "3. 확률 매칭",
-        how_3_desc: "학습된 데이터와 비교하여 가장 높은 일치율을 보이는 동물상을 퍼센트(%) 단위로 보여드립니다.",
-        lotto_title: "스마트 로또 번호 생성기",
-        lotto_desc: "엄격한 난수 발생 알고리즘을 통해 추출된 행운의 6개 번호입니다. 매주 새로운 행운에 도전해보세요.",
-        lotto_btn: "幸運の番号を生成する",
-        lotto_tips_title: "로또 번호 선택 팁",
-        lotto_tip_1: "균형 있는 조합: 홀수와 짝수의 비율을 3:3 또는 2:4 정도로 섞는 것이 통계적으로 안정적입니다.",
-        lotto_tip_2: "연속 번호 피하기: 1, 2, 3처럼 3개 이상의 연속 번호가 나올 확률은 매우 낮습니다.",
-        lotto_tip_3: "총합의 범위: 선택한 6개 번호의 총합이 100에서 170 사이에 위치하는 경우가 가장 많습니다.",
-        faq_title: "자주 묻는 질문 (FAQ)",
-        faq_q1: "Q. 사진 데이터는 안전하게 보호되나요?",
-        faq_a1: "A. 네, 본 서비스는 브라우저 기반 AI를 사용합니다. 업로드하신 사진은 서버로 전송되지 않으며, 분석 즉시 메모리에서 삭제됩니다.",
-        faq_q2: "Q. 로또 번호 생성 알고리즘은 무엇인가요?",
-        faq_a2: "A. JavaScript의 Math.random()을 기반으로 하되, 중복을 완벽히 제거한 1~45 사이의 난수를 생성합니다.",
-        contact_title: "提携および改善の提案",
-        contact_desc: "여러분들의 소중한 의견은 더 나은 서비스를 만드는 밑거름이 됩니다.",
-        contact_placeholder_name: "お名前または会社名",
-        contact_placeholder_email: "回答を受け取るメールアドレス",
-        contact_placeholder_message: "提案内容や不便な点を記入してください",
-        contact_btn: "お問い合わせ内容を送信する",
-        comment_title: "コミュニティフィードバック",
-        footer_text: "© 2024 AI Portal Project. 高品質な情報とツールを提供します。",
+        animal_desc: "写真1枚で動物顔を分析！AIが精密に分析します。",
+        upload_text: "写真をクリックしてアップロード",
+        loading_text: "分析中...",
+        how_it_works_title: "分析の仕組み",
+        how_1_title: "1. 学習",
+        how_1_desc: "CNNアルゴリズムで学習されたモデルを使用します。",
+        how_2_title: "2. 抽出",
+        how_2_desc: "顔の特徴をリアルタイムで抽出します。",
+        how_3_title: "3. 一致",
+        how_3_desc: "一致率をパーセントで表示します。",
+        lotto_title: "スマートロト生成機",
+        lotto_desc: "乱数アルゴリズムによる幸運の6番号。",
+        lotto_btn: "番号を生成する",
+        lotto_tips_title: "選択のヒント",
+        lotto_tip_1: "バランス: 奇数と偶数を混ぜる。",
+        lotto_tip_2: "連続回避: 3つ以上の連続を避ける。",
+        lotto_tip_3: "合計: 合計100〜170の間。",
+        tts_title: "AI 音声変換 (TTS)",
+        tts_desc: "テキストを音声に変換。WAVファイルが生成されます。",
+        tts_placeholder: "内容を入力...",
+        tts_btn_execute: "TTS実行",
+        tts_btn_play: "再生",
+        tts_btn_download: "ダウンロード",
+        tts_status_loading: "音声を生成中...",
+        tts_status_success: "成功: 準備完了。",
+        tts_status_error: "失敗: サーバーを確認してください。",
+        faq_title: "FAQ",
+        faq_q1: "Q. 写真保護?",
+        faq_a1: "A. ローカルAIで安全です。",
+        faq_q2: "Q. ロトアルゴリズム?",
+        faq_a2: "A. Math.random()ベースの重複排除。",
+        contact_title: "お問い合わせ",
+        contact_desc: "意見をお聞かせください。",
+        contact_placeholder_name: "お名前",
+        contact_placeholder_email: "メール",
+        contact_placeholder_message: "内容",
+        contact_btn: "送信",
+        comment_title: "フィードバック",
+        footer_text: "© 2024 AI Portal Project.",
         footer_home: "ホーム",
-        footer_about: "サイト紹介",
-        footer_privacy: "個人情報保護方針",
-        footer_contact: "お問い合わせ",
-        // About Page
-        about_head_title: "サイト紹介 - AI Portal",
-        about_title: "プロジェクト紹介",
-        about_subtitle: "AI Portal은 복잡한 인공지능 기술을 일상 속에서 쉽고 재미있게 경험할 수 있도록 설계된 실험적 포털 사이트입니다.",
-        about_vision_title: "私たちのビジョン",
-        about_vision_desc: "우리는 기술이 소수의 전문가들만의 전유물이 되어서는 안 된다고 믿습니다. AI Portal은 머신러닝, 확률 통계와 같은 기술적 요소를 직관적인 인터페이스로 풀어내어, 사용자들이 자연스럽게 최신 기술의 혜택을 누릴 수 있는 환경을 제공합니다.",
-        about_services_title: "提供サービス",
-        about_s1_title: "🤖 AI 動物顔分析",
-        about_s1_desc: "Google의 Teachable Machine을 기반으로 제작된 이미지 분류 모델을 사용하여, 사용자의 외모적 특징을 분석하고 가장 닮은 동물을 찾아줍니다. 브라우저 내 로컬 분석으로 완벽한 프라이버시를 보장합니다.",
-        about_s2_title: "🍀 스마트 로또 생성기",
-        about_s2_desc: "단순한 번호 생성을 넘어, 확률적 통계 데이터를 기반으로 한 최적의 번호 조합 팁과 함께 무작위 번호 추출 기능을 제공합니다.",
-        about_tech_title: "技術的透明性",
-        about_tech_desc: "AI Portal은 오픈소스 정신을 지향합니다. 본 서비스는 TensorFlow.js, Teachable Machine 등 신뢰할 수 있는 라이브러리를 활용하여 제작되었으며, 모든 데이터 처리는 투명하게 공개된 로직에 따라 수행됩니다.",
-        about_back_btn: "メインツールを体験する",
-        footer_text_vision: "© 2024 AI Portal Project. イノベーションを日常につなげます。",
-        // Privacy Page
-        privacy_head_title: "個人情報保護方針 - AI Portal",
-        privacy_title: "個人情報保護方針",
-        privacy_p1: "本사이트(\"AI Portal\")는 사용자의 개인정보를 소중히 다루며, 관련 법령을 준수합니다.",
-        privacy_h1: "1. 収集する個人情報",
-        privacy_p2: "본 사이트는 사용자의 직접적인 개인정보(이름, 연락처 등)를 별도로 저장하거나 수집하지 않습니다. 다만, 구글 애드센스 등 제3자 광고 서비스를 이용하는 경우 쿠키(Cookie)가 사용될 수 있습니다.",
-        privacy_h2: "2. 利用目的",
-        privacy_p3: "수집된 비개인적 정보(쿠키 등)는 서비스 개선, 사용자 맞춤형 광고 제공, 통계 분석을 위해 사용됩니다.",
-        privacy_h3: "3. 第三者サービス",
-        privacy_p4: "Google을 포함한 제3자 제공업체는 쿠키를 사용하여 사용자의 이전 웹사이트 방문 기록을 토대로 광고를 게재합니다. 사용자는 구글의 광고 설정을 방문하여 맞춤설정 광고를 해제할 수 있습니다.",
-        privacy_h4: "4. データセキュリティ",
-        privacy_p5: "동물상 테스트를 위해 업로드되는 이미지는 브라우저 상에서 AI 모델(Teachable Machine)을 통해 즉시 분석되며, 서버로 전송되거나 저장되지 않습니다.",
-        privacy_h5: "5. お問い合わせ",
-        privacy_p6: "개인정보 관련 문의사항은 하단의 제휴 문의 폼을 이용해 주시기 바랍니다.",
-        privacy_back_btn: "ホームに戻る",
-        footer_text_privacy: "© 2024 AI Portal Project. All rights reserved."
+        footer_about: "紹介",
+        footer_privacy: "方針",
+        footer_contact: "連絡"
     },
     zh: {
         head_title: "AI Portal - 动物相测试 & 乐透概率分析",
@@ -255,77 +206,57 @@ const translations = {
         nav_about: "网站介绍",
         nav_contact: "联系我们",
         nav_blog: "知识中心",
-        hero_title: "分析您的特征与好运的 AI 门户",
-        hero_subtitle: "数据和人工智能带来的全新体验。",
+        nav_tts: "TTS转换",
+        hero_title: "AI 门户",
+        hero_subtitle: "体验由数据带来的全新感官。",
         hero_btn_animal: "动物相测试",
-        hero_btn_lotto: "乐透号码生成",
-        hero_btn_blog: "AI知识中心",
+        hero_btn_lotto: "乐透生成器",
+        hero_btn_blog: "知识中心",
+        hero_btn_tts: "TTS转换",
         animal_title: "AI 动物相测试",
-        animal_desc: "只需一张照片即可分析您的动物相！是犬系还是猫系？AI 为您精准分析。",
-        upload_text: "点击上传您的照片",
-        loading_text: "AI 正在分析中...",
-        how_it_works_title: "它是如何运作的？ (Deep Learning)",
-        how_1_title: "1. 数据训练",
-        how_1_desc: "我们使用通过 CNN 算法对数十万张动物照片进行预训练的模型。",
-        how_2_title: "2. 特征提取",
-        how_2_desc: "实时提取眼角、下颚线和鼻角等核心面部特征点。",
-        how_3_title: "3. 概率匹配",
-        how_3_desc: "我们会以百分比 (%) 形式展示与训练数据最匹配的动物类型。",
-        lotto_title: "智能乐透号码生成器",
-        lotto_desc: "通过严格的随机算法生成的幸运 6 位数字。每周挑战您的好运。",
-        lotto_btn: "生成幸运号码",
-        lotto_tips_title: "乐透号码选择技巧",
-        lotto_tip_1: "均衡组合：统计显示，奇数和偶数比例为 3:3 或 2:4 比较稳定。",
-        lotto_tip_2: "避免连续数字：像 1, 2, 3 这样出现 3 个及以上连续数字的概率极低。",
-        lotto_tip_3: "总和范围：选中的 6 个数字总和通常在 100 到 170 之间。",
-        faq_title: "常见问题 (FAQ)",
-        faq_q1: "Q. 我的照片数据安全吗？",
-        faq_a1: "A. 是的，本服务使用基于浏览器的 AI。照片不会发送到服务器，分析后会立即从内存中删除。",
-        faq_q2: "Q. 乐透号码生成算法是什么？",
-        faq_a2: "A. 基于 JavaScript 的 Math.random()，并去重生成 1-45 之间的随机数。",
-        contact_title: "商务合作与改进建议",
-        contact_desc: "您的宝贵意见是我们将服务做得更好的基石。",
-        contact_placeholder_name: "姓名或公司名称",
-        contact_placeholder_email: "接收回复的邮箱地址",
-        contact_placeholder_message: "请填写您的建议或投诉内容",
-        contact_btn: "发送咨询内容",
-        comment_title: "社区反馈",
-        footer_text: "© 2024 AI Portal Project. 提供高质量的信息和工具。",
+        animal_desc: "分析您的动物相！AI为您精准分析。",
+        upload_text: "点击上传照片",
+        loading_text: "分析中...",
+        how_it_works_title: "运作原理",
+        how_1_title: "1. 训练",
+        how_1_desc: "使用CNN算法预训练模型。",
+        how_2_title: "2. 提取",
+        how_2_desc: "实时提取面部特征。",
+        how_3_title: "3. 匹配",
+        how_3_desc: "展示匹配百分比。",
+        lotto_title: "智能乐透生成器",
+        lotto_desc: "随机算法生成6位数字。",
+        lotto_btn: "生成号码",
+        lotto_tips_title: "选择技巧",
+        lotto_tip_1: "均衡: 奇偶比例均衡。",
+        lotto_tip_2: "连续: 避免3个以上连续数字。",
+        lotto_tip_3: "总和: 总和在100-170之间。",
+        tts_title: "AI 语音转换 (TTS)",
+        tts_desc: "将文本转换为自然语音。生成WAV文件。",
+        tts_placeholder: "输入内容...",
+        tts_btn_execute: "执行TTS",
+        tts_btn_play: "播放",
+        tts_btn_download: "下载",
+        tts_status_loading: "正在生成音频...",
+        tts_status_success: "成功: 音频已就绪。",
+        tts_status_error: "失败: 请检查服务器连接。",
+        faq_title: "常见问题",
+        faq_q1: "Q. 照片安全?",
+        faq_a1: "A. 本地AI确保隐私。",
+        faq_q2: "Q. 乐透算法?",
+        faq_a2: "A. Math.random()基础去重。",
+        contact_title: "联系我们",
+        contact_desc: "感谢您的反馈。",
+        contact_placeholder_name: "姓名",
+        contact_placeholder_email: "邮箱",
+        contact_placeholder_message: "留言",
+        contact_btn: "发送",
+        comment_title: "反馈",
+        footer_text: "© 2024 AI Portal Project.",
         footer_home: "首页",
-        footer_about: "网站介绍",
-        footer_privacy: "隐私政策",
-        footer_contact: "联系我们",
-        // About Page
-        about_head_title: "网站介绍 - AI Portal",
-        about_title: "项目介绍",
-        about_subtitle: "AI Portal 是一个实验性门户网站，旨在让复杂的 AI 技术在日常生活中变得简单有趣。",
-        about_vision_title: "我们的愿景",
-        about_vision_desc: "我们相信技术不应只是少数专家的专利。AI Portal 提供直觉化的界面，让用户能自然地享受最新技术的成果。",
-        about_services_title: "提供的服务",
-        about_s1_title: "🤖 AI 动物相分析",
-        about_s1_desc: "使用基于 Google Teachable Machine 的模型分析您的面部特征。通过本地分析确保隐私。",
-        about_s2_title: "🍀 智能乐透生成器",
-        about_s2_desc: "不仅是生成号码，还提供基于统计数据的最佳组合建议。",
-        about_tech_title: "技术透明度",
-        about_tech_desc: "我们崇尚开源精神。本服务使用了 TensorFlow.js 和 Teachable Machine 等可靠的库。",
-        about_back_btn: "体验主要工具",
-        footer_text_vision: "© 2024 AI Portal Project. 将创新与生活相连。",
-        // Privacy Page
-        privacy_head_title: "隐私政策 - AI Portal",
-        privacy_title: "隐私政策",
-        privacy_p1: "本网站（\"AI Portal\"）重视您的个人隐私，并遵守相关法律法规。",
-        privacy_h1: "1. 收集的个人信息项",
-        privacy_p2: "我们不存储或收集个人识别信息（姓名、联系方式等）。Google AdSense 等第三方服务可能会使用 Cookie。",
-        privacy_h2: "2. 使用目的",
-        privacy_p3: "收集的非个人信息用于服务改进、定制化广告和统计分析。",
-        privacy_h3: "3. 第三方服务",
-        privacy_p4: "Google 等第三方供应商会根据用户之前的访问记录使用 Cookie 投放广告。您可以在 Google 广告设置中禁用。",
-        privacy_h4: "4. 数据安全",
-        privacy_p5: "照片在浏览器上即时分析，不会传输到服务器或进行存储。",
-        privacy_h5: "5. 联系方式",
-        privacy_p6: "如有隐私相关疑问，请使用底部的咨询表单。",
-        privacy_back_btn: "返回首页",
-        footer_text_privacy: "© 2024 AI Portal Project. All rights reserved."
+        footer_about: "介绍",
+        footer_privacy: "政策",
+        footer_contact: "联系"
     }
 };
 
@@ -407,6 +338,77 @@ window.onscroll = function() {
 if (backToTop) {
     backToTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// TTS Logic
+if (ttsExecuteBtn) {
+    ttsExecuteBtn.addEventListener('click', async () => {
+        const text = ttsInput.value.trim();
+        if (!text) return;
+
+        const lang = localStorage.getItem('lang') || 'ko';
+        ttsStatus.textContent = translations[lang].tts_status_loading;
+        ttsStatus.style.color = 'var(--accent-color)';
+        
+        ttsExecuteBtn.disabled = true;
+        ttsPlayBtn.disabled = true;
+        ttsDownloadBtn.disabled = true;
+
+        try {
+            const response = await fetch('http://211.115.87.241:3000/tts-api', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    text: text,
+                    speed: 120
+                })
+            });
+
+            if (!response.ok) throw new Error('Network response was not ok');
+
+            const blob = await response.blob();
+            ttsAudioBlob = blob;
+            
+            if (ttsAudioUrl) URL.revokeObjectURL(ttsAudioUrl);
+            ttsAudioUrl = URL.createObjectURL(blob);
+            
+            ttsAudio.src = ttsAudioUrl;
+            ttsStatus.textContent = translations[lang].tts_status_success;
+            ttsStatus.style.color = '#4CAF50';
+            
+            ttsPlayBtn.disabled = false;
+            ttsDownloadBtn.disabled = false;
+        } catch (error) {
+            console.error('TTS API error:', error);
+            ttsStatus.textContent = translations[lang].tts_status_error;
+            ttsStatus.style.color = '#f44336';
+        } finally {
+            ttsExecuteBtn.disabled = false;
+        }
+    });
+}
+
+if (ttsPlayBtn) {
+    ttsPlayBtn.addEventListener('click', () => {
+        if (ttsAudio.src) {
+            ttsAudio.play();
+        }
+    });
+}
+
+if (ttsDownloadBtn) {
+    ttsDownloadBtn.addEventListener('click', () => {
+        if (ttsAudioUrl) {
+            const a = document.createElement('a');
+            a.href = ttsAudioUrl;
+            a.download = 'tts_result.wav';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
     });
 }
 
