@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://matthewchoi3400-netizen.github.io/product-builder-lecture/sitemap.xml

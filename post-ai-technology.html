@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="인공지능 이미지 분석의 핵심 원리인 합성곱 신경망(CNN)과 Teachable Machine의 구동 방식을 상세히 분석합니다.">
+    <title>인공지능 이미지 분석의 원리와 미래 - AI Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "인공지능 이미지 분석의 원리와 미래: Teachable Machine을 중심으로",
+      "author": {
+        "@type": "Person",
+        "name": "AI Portal Editor"
+      },
+      "datePublished": "2024-04-16",
+      "description": "딥러닝 기술이 어떻게 인간의 얼굴을 동물상으로 분류하는지 그 기술적 배경을 설명합니다."
+    }
+    </script>
+</head>
+<body data-theme="light">
+    <header>
+        <nav class="navbar">
+            <div class="logo"><a href="index.html">AI Portal</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html#animal-test">동물상 테스트</a></li>
+                <li><a href="index.html#lotto">로또 생성기</a></li>
+                <li><a href="about.html">사이트 소개</a></li>
+                <li><a href="#contact">문의</a></li>
+            </ul>
+            <div class="header-controls">
+                <select id="lang-select" class="lang-select">
+                    <option value="ko">Korean</option>
+                    <option value="en">English</option>
+                    <option value="ja">Japanese</option>
+                    <option value="zh">Chinese</option>
+                </select>
+                <div class="theme-toggle">
+                    <button id="theme-btn">Dark Mode</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container" style="margin-top: 120px; text-align: left; max-width: 900px;">
+        <article class="blog-post">
+            <div class="section-badge">Artificial Intelligence</div>
+            <h1 style="font-size: 2.5rem; line-height: 1.2; margin-bottom: 20px;">인공지능 이미지 분석의 원리와 미래: Teachable Machine을 중심으로</h1>
+            <p style="color: #888; margin-bottom: 40px;">작성일: 2024년 4월 16일 | 작성자: AI Portal 기술팀</p>
+
+            <section style="margin-bottom: 40px;">
+                <p>오늘날 우리는 스마트폰의 얼굴 인식 잠금 해제부터 자율주행 자동차의 장애물 감지까지, 인공지능(AI) 이미지 분석 기술이 깊숙이 침투한 세상에 살고 있습니다. 본 아티클에서는 이러한 혁신의 중심에 있는 딥러닝 알고리즘, 특히 '합성곱 신경망(CNN)'의 원리와 Google의 Teachable Machine이 어떻게 누구나 쉽게 AI를 활용할 수 있게 만들었는지 심층적으로 분석합니다.</p>
+            </section>
+
+            <section style="margin-bottom: 40px;">
+                <h2>1. 합성곱 신경망(CNN)의 혁신</h2>
+                <p>과거의 컴퓨터 비전 기술은 개발자가 이미지의 특징(예: 선의 방향, 색상 대비)을 일일이 수동으로 정의해야 했습니다. 하지만 CNN의 등장으로 인공지능은 데이터로부터 직접 특징을 학습하기 시작했습니다.</p>
+                <p>CNN은 이미지를 작은 픽셀 단위가 아닌, 특정 패턴을 가진 '커널'을 통해 스캔합니다. 이 과정에서 필터가 이미지 위를 지나가며 특징 지도를 생성하고, 층이 깊어질수록 단순한 선에서 시작해 코의 모양, 눈매의 곡선과 같은 복잡한 형상을 인식하게 됩니다. 우리가 제공하는 '동물상 테스트' 역시 이러한 다층 구조의 신경망이 인간 얼굴의 미세한 특징을 추출하여 학습된 동물 데이터와 비교하는 원리를 기반으로 합니다.</p>
+            </section>
+
+            <section style="margin-bottom: 40px;">
+                <h2>2. Teachable Machine: AI의 민주화</h2>
+                <p>Google에서 개발한 Teachable Machine은 복잡한 코딩 없이도 고성능 웹 기반 모델을 구축할 수 있게 해주는 도구입니다. 이는 '전이 학습(Transfer Learning)'이라는 강력한 기법을 사용합니다. 이미 수백만 장의 이미지로 학습된 거대 모델(MobileNet 등)의 상단 레이어만을 사용자의 데이터(예: 강아지상, 고양이상 사진)로 재학습시키는 방식입니다.</p>
+                <p>이러한 방식은 적은 양의 데이터로도 높은 정확도를 확보할 수 있게 해주며, 무엇보다 웹 브라우저 상에서 실시간으로 구동된다는 장점이 있습니다. 이는 대규모 서버 인프라 없이도 개별 사용자의 기기에서 즉각적인 분석 결과를 제공할 수 있음을 의미합니다.</p>
+            </section>
+
+            <section style="margin-bottom: 40px;">
+                <h2>3. 프라이버시와 로컬 분석의 가치</h2>
+                <p>많은 사용자가 AI 서비스 이용 시 자신의 사진이 서버에 저장되는 것에 대한 거부감을 느낍니다. 하지만 최신 웹 기술(TensorFlow.js)을 활용하면 이미지를 서버로 전송하지 않고 사용자의 브라우저 내 메모리에서만 분석을 수행할 수 있습니다. AI Portal은 이러한 'Privacy-First' 접근법을 지향하며, 기술의 진보와 개인정보 보호가 공존할 수 있는 방향을 제시합니다.</p>
+            </section>
+
+            <section style="margin-bottom: 40px;">
+                <h2>결론: 인공지능과 인간의 공존</h2>
+                <p>동물상 테스트는 단순한 재미를 넘어, 우리가 인공지능이라는 거대한 기술과 상호작용하는 하나의 방식입니다. 기술이 발전할수록 AI는 더욱 정교하게 우리의 개성을 분석하고, 이를 통해 우리는 기술을 더 친숙하게 느끼게 될 것입니다. AI Portal은 앞으로도 이러한 기술적 통찰을 바탕으로 사용자에게 가치 있는 도구와 정보를 제공할 것입니다.</p>
+            </section>
+        </article>
+
+        <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--number-border);">
+            <a href="index.html" class="main-btn" style="text-decoration: none;">메인으로 돌아가기</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 AI Portal Project. 모든 지식은 공유될 때 가치를 가집니다.</p>
+            <div class="footer-links" style="margin-top: 15px;">
+                <a href="index.html">홈</a>
+                <a href="about.html">사이트 소개</a>
+                <a href="privacy.html">개인정보 처리방침</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

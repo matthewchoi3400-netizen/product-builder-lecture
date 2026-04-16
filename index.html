@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AI 동물상 테스트와 로또 번호 생성기를 제공하는 프리미엄 AI 포털입니다. 인공지능 분석 원리와 로또 확률 통계를 상세히 설명하며 사용자에게 실질적인 가치를 제공합니다.">
-    <meta name="keywords" content="AI 동물상 테스트, 로또 번호 생성기, Teachable Machine, 인공지능 관상, 로또 명당, 무료 AI 테스트">
+    <meta name="keywords" content="AI 동물상 테스트, 로또 번호 생성기, Teachable Machine, 인공지능 관상, 로또 명당, 무료 AI 테스트, 딥러닝 원리">
     <title data-i18n="head_title">AI Portal - 동물상 테스트 & 로또 확률 분석</title>
     <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AI Portal",
+      "url": "https://matthewchoi3400-netizen.github.io/product-builder-lecture/",
+      "applicationCategory": "EntertainmentApplication, EducationalApplication",
+      "description": "AI Animal Face Test and Smart Lotto Generator with detailed educational content.",
+      "browserRequirements": "Requires JavaScript and HTML5 support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
 </head>
 <body data-theme="light">
     <header>
@@ -15,8 +31,8 @@
             <ul class="nav-links">
                 <li><a href="#animal-test" data-i18n="nav_animal">동물상 테스트</a></li>
                 <li><a href="#lotto" data-i18n="nav_lotto">로또 생성기</a></li>
+                <li><a href="#blog" data-i18n="nav_blog">지식 센터</a></li>
                 <li><a href="about.html" data-i18n="nav_about">사이트 소개</a></li>
-                <li><a href="#contact" data-i18n="nav_contact">문의</a></li>
             </ul>
             <div class="header-controls">
                 <select id="lang-select" class="lang-select">
@@ -38,13 +54,39 @@
             <p data-i18n="hero_subtitle">데이터와 인공지능이 제안하는 새로운 경험을 만나보세요.</p>
             <div style="margin-top: 25px;">
                 <a href="#animal-test" class="main-btn" style="text-decoration: none; margin-right: 10px;" data-i18n="hero_btn_animal">동물상 테스트</a>
-                <a href="#lotto" class="main-btn" style="text-decoration: none; background-color: transparent; border: 2px solid white;" data-i18n="hero_btn_lotto">로또 번호 생성</a>
+                <a href="#blog" class="main-btn" style="text-decoration: none; background-color: transparent; border: 2px solid white;" data-i18n="hero_btn_blog">AI 지식 센터</a>
+            </div>
+        </section>
+
+        <!-- Blog Section (AdSense Value) -->
+        <section id="blog" class="container" style="background-color: transparent; box-shadow: none; padding: 0;">
+            <div class="section-badge">Latest Knowledge</div>
+            <h2 style="text-align: center; margin-bottom: 40px;">AI & 데이터 인사이트</h2>
+            <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div class="blog-card" style="background: var(--container-bg); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left;">
+                    <span style="color: var(--accent-color); font-weight: bold; font-size: 0.8rem;">TECH</span>
+                    <h3 style="margin: 10px 0;">인공지능 이미지 분석의 원리와 미래</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">CNN 알고리즘과 Teachable Machine이 어떻게 우리의 얼굴을 분석하는지 그 기술적 배경을 알아봅니다.</p>
+                    <a href="post-ai-technology.html" style="color: var(--btn-bg); font-weight: bold; text-decoration: none;">더 읽어보기 →</a>
+                </div>
+                <div class="blog-card" style="background: var(--container-bg); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left;">
+                    <span style="color: var(--accent-color); font-weight: bold; font-size: 0.8rem;">MATH</span>
+                    <h3 style="margin: 10px 0;">로또 확률의 수학적 분석</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">독립 시행의 법칙과 대수의 법칙을 통해 로또 번호 선택의 무작위성과 확률적 본질을 심층 분석합니다.</p>
+                    <a href="post-probability-math.html" style="color: var(--btn-bg); font-weight: bold; text-decoration: none;">더 읽어보기 →</a>
+                </div>
+                <div class="blog-card" style="background: var(--container-bg); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left;">
+                    <span style="color: var(--accent-color); font-weight: bold; font-size: 0.8rem;">PRIVACY</span>
+                    <h3 style="margin: 10px 0;">현대 웹 기술에서의 디지털 프라이버시</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">서버 없는 브라우저 기반 AI 분석이 어떻게 사용자의 소중한 데이터를 보호하고 혁신을 이루는지 살펴봅니다.</p>
+                    <a href="post-digital-privacy.html" style="color: var(--btn-bg); font-weight: bold; text-decoration: none;">더 읽어보기 →</a>
+                </div>
             </div>
         </section>
 
         <!-- AI Animal Test Section -->
         <section id="animal-test" class="container">
-            <div class="section-badge">AI Technology</div>
+            <div class="section-badge">Interactive Tool</div>
             <h2 data-i18n="animal_title">AI 동물상 테스트</h2>
             <p class="section-desc" data-i18n="animal_desc">사진 한 장으로 분석하는 나의 동물상! 강아지, 고양이 중 당신은 어떤 타입일까요? AI가 정밀하게 분석합니다.</p>
             
@@ -67,27 +109,9 @@
             <div id="label-container"></div>
         </section>
 
-        <section class="container info-section">
-            <h2 data-i18n="how_it_works_title">어떻게 분석되나요? (Deep Learning)</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <h3 data-i18n="how_1_title">1. 데이터 학습</h3>
-                    <p data-i18n="how_1_desc">수십만 장의 동물 사진 데이터를 CNN(합성곱 신경망) 알고리즘으로 사전 학습한 모델을 사용합니다.</p>
-                </div>
-                <div class="info-item">
-                    <h3 data-i18n="how_2_title">2. 특징 추출</h3>
-                    <p data-i18n="how_2_desc">업로드된 이미지에서 눈매, 턱선, 코의 각도 등 얼굴의 핵심 특징점을 실시간으로 추출합니다.</p>
-                </div>
-                <div class="info-item">
-                    <h3 data-i18n="how_3_title">3. 확률 매칭</h3>
-                    <p data-i18n="how_3_desc">학습된 데이터와 비교하여 가장 높은 일치율을 보이는 동물상을 퍼센트(%) 단위로 보여드립니다.</p>
-                </div>
-            </div>
-        </section>
-
         <!-- Lotto Section -->
         <section id="lotto" class="container">
-            <div class="section-badge">Probability</div>
+            <div class="section-badge">Probability Tool</div>
             <h2 data-i18n="lotto_title">스마트 로또 번호 생성기</h2>
             <p class="section-desc" data-i18n="lotto_desc">엄격한 난수 발생 알고리즘을 통해 추출된 행운의 6개 번호입니다. 매주 새로운 행운에 도전해보세요.</p>
             
@@ -100,15 +124,6 @@
                 <span class="number">?</span>
             </div>
             <button id="generate-btn" class="main-btn" data-i18n="lotto_btn">행운의 번호 생성하기</button>
-        </section>
-
-        <section class="container info-section">
-            <h2 data-i18n="lotto_tips_title">로또 번호 선택 팁</h2>
-            <ul class="tip-list" style="text-align: left; padding-left: 20px;">
-                <li data-i18n="lotto_tip_1"><strong>균형 있는 조합:</strong> 홀수와 짝수의 비율을 3:3 또는 2:4 정도로 섞는 것이 통계적으로 안정적입니다.</li>
-                <li data-i18n="lotto_tip_2"><strong>연속 번호 피하기:</strong> 1, 2, 3처럼 3개 이상의 연속 번호가 나올 확률은 매우 낮습니다.</li>
-                <li data-i18n="lotto_tip_3"><strong>총합의 범위:</strong> 선택한 6개 번호의 총합이 100에서 170 사이에 위치하는 경우가 가장 많습니다.</li>
-            </ul>
         </section>
 
         <!-- FAQ Section for User Value -->

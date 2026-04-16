@@ -17,10 +17,12 @@ const translations = {
         nav_lotto: "로또 생성기",
         nav_about: "사이트 소개",
         nav_contact: "문의",
+        nav_blog: "지식 센터",
         hero_title: "당신의 특징과 행운을 분석하는 AI 포털",
         hero_subtitle: "데이터와 인공지능이 제안하는 새로운 경험을 만나보세요.",
         hero_btn_animal: "동물상 테스트",
         hero_btn_lotto: "로또 번호 생성",
+        hero_btn_blog: "AI 지식 센터",
         animal_title: "AI 동물상 테스트",
         animal_desc: "사진 한 장으로 분석하는 나의 동물상! 강아지, 고양이 중 당신은 어떤 타입일까요? AI가 정밀하게 분석합니다.",
         upload_text: "클릭하여 사진을 업로드하세요",
@@ -94,10 +96,12 @@ const translations = {
         nav_lotto: "Lotto Generator",
         nav_about: "About",
         nav_contact: "Contact",
+        nav_blog: "Knowledge Center",
         hero_title: "AI Portal for Analyzing Your Traits & Luck",
         hero_subtitle: "Experience new insights provided by data and AI.",
         hero_btn_animal: "Animal Test",
         hero_btn_lotto: "Lotto Generator",
+        hero_btn_blog: "Knowledge Center",
         animal_title: "AI Animal Face Test",
         animal_desc: "Analyze your face with just one photo! Dog or Cat? Find out your animal type with precision AI.",
         upload_text: "Click to upload your photo",
@@ -171,35 +175,37 @@ const translations = {
         nav_lotto: "ロト生成機",
         nav_about: "サイト紹介",
         nav_contact: "お問い合わせ",
+        nav_blog: "ナレッジセンター",
         hero_title: "あなたの特徴と運勢を分析するAIポータル",
-        hero_subtitle: "データとAIが提案する新しい体験に出会ってください。",
+        hero_subtitle: "데이터와 AI가 제안하는 새로운 체험을 만나보세요.",
         hero_btn_animal: "動物顔診断",
         hero_btn_lotto: "ロト番号生成",
+        hero_btn_blog: "AIナ레ッジセンター",
         animal_title: "AI 動物顔診断",
-        animal_desc: "写真1枚で分析する私の動物顔！犬、猫のうち、あなたはどのタイプ？AIが精密に分析します。",
-        upload_text: "クリックして写真をアップロードしてください",
-        loading_text: "AIが分析中です...",
-        how_it_works_title: "どのように分析されますか？ (Deep Learning)",
-        how_1_title: "1. データ学習",
-        how_1_desc: "数十万枚の動物写真データをCNNアルゴリズムで事前学習したモデルを使用します。",
-        how_2_title: "2. 特徴抽出",
-        how_2_desc: "アップロードされた画像から目元、顎のライン、鼻の角度など、顔の核心的な特徴をリアルタイムで抽出します。",
-        how_3_title: "3. 確率マッチング",
-        how_3_desc: "学習されたデータと比較して、最も高い一致率を示す動物タイプをパーセント(%)単位で表示します。",
-        lotto_title: "スマートロト番号生成機",
-        lotto_desc: "厳格な乱数生成アルゴリズムを通じて抽出された幸運の6つの番号です。毎週新しい幸運に挑戦してください。",
+        animal_desc: "写真1枚で分析하는 나의 동물상! 犬、猫のうち、あなたはどのタイプ？AIが精密に分析します。",
+        upload_text: "클릭하여 사진을 업로드하세요",
+        loading_text: "AI가 분석 중입니다...",
+        how_it_works_title: "어떻게 분석되나요? (Deep Learning)",
+        how_1_title: "1. 데이터 학습",
+        how_1_desc: "수십만 장의 동물 사진 데이터를 CNN 알고리즘으로 사전 학습한 모델을 사용합니다.",
+        how_2_title: "2. 특징 추출",
+        how_2_desc: "업로드된 이미지에서 눈매, 턱선, 코의 각도 등 얼굴의 핵심 특징점을 실시간으로 추출합니다.",
+        how_3_title: "3. 확률 매칭",
+        how_3_desc: "학습된 데이터와 비교하여 가장 높은 일치율을 보이는 동물상을 퍼센트(%) 단위로 보여드립니다.",
+        lotto_title: "스마트 로또 번호 생성기",
+        lotto_desc: "엄격한 난수 발생 알고리즘을 통해 추출된 행운의 6개 번호입니다. 매주 새로운 행운에 도전해보세요.",
         lotto_btn: "幸運の番号を生成する",
-        lotto_tips_title: "ロト番号選択のヒント",
-        lotto_tip_1: "バランスの良い組み合わせ: 奇数と偶数の比率を3:3または2:4程度で混ぜるのが統計的に安定しています。",
-        lotto_tip_2: "連続番号を避ける: 1、2、3のように3つ以上の連続番号が出る確率は非常に低いです。",
-        lotto_tip_3: "合計の範囲: 選択した6つの番号の合計は、100から170の間に位置することが最も多いです。",
-        faq_title: "よくある質問 (FAQ)",
-        faq_q1: "Q. 写真データは安全に保護されますか？",
-        faq_a1: "A. はい、本サービスはブラウザベースのAIを使用します。写真はサーバーに送信されず、分析後すぐにメモリから削除されます。",
-        faq_q2: "Q. ロト番号生成アルゴリズムは何ですか？",
-        faq_a2: "A. JavaScriptのMath.random()をベースにし、重複を完全に取り除いた1~45の間の乱数を生成します。",
+        lotto_tips_title: "로또 번호 선택 팁",
+        lotto_tip_1: "균형 있는 조합: 홀수와 짝수의 비율을 3:3 또는 2:4 정도로 섞는 것이 통계적으로 안정적입니다.",
+        lotto_tip_2: "연속 번호 피하기: 1, 2, 3처럼 3개 이상의 연속 번호가 나올 확률은 매우 낮습니다.",
+        lotto_tip_3: "총합의 범위: 선택한 6개 번호의 총합이 100에서 170 사이에 위치하는 경우가 가장 많습니다.",
+        faq_title: "자주 묻는 질문 (FAQ)",
+        faq_q1: "Q. 사진 데이터는 안전하게 보호되나요?",
+        faq_a1: "A. 네, 본 서비스는 브라우저 기반 AI를 사용합니다. 업로드하신 사진은 서버로 전송되지 않으며, 분석 즉시 메모리에서 삭제됩니다.",
+        faq_q2: "Q. 로또 번호 생성 알고리즘은 무엇인가요?",
+        faq_a2: "A. JavaScript의 Math.random()을 기반으로 하되, 중복을 완벽히 제거한 1~45 사이의 난수를 생성합니다.",
         contact_title: "提携および改善の提案",
-        contact_desc: "皆様の貴重なご意見は、より良いサービスを作る糧となります。",
+        contact_desc: "여러분들의 소중한 의견은 더 나은 서비스를 만드는 밑거름이 됩니다.",
         contact_placeholder_name: "お名前または会社名",
         contact_placeholder_email: "回答を受け取るメールアドレス",
         contact_placeholder_message: "提案内容や不便な点を記入してください",
@@ -213,32 +219,32 @@ const translations = {
         // About Page
         about_head_title: "サイト紹介 - AI Portal",
         about_title: "プロジェクト紹介",
-        about_subtitle: "AI Portalは、複雑なAI技術を日常の中で簡単かつ楽しく体験できるように設計された実験的なポータルサイトです。",
+        about_subtitle: "AI Portal은 복잡한 인공지능 기술을 일상 속에서 쉽고 재미있게 경험할 수 있도록 설계된 실험적 포털 사이트입니다.",
         about_vision_title: "私たちのビジョン",
-        about_vision_desc: "技術が少数の専門家だけの専有物であってはならないと信じています。AI Portalは直感的なインターフェースを提供し、ユーザーが最新技術の恩恵を受けられるようにします。",
+        about_vision_desc: "우리는 기술이 소수의 전문가들만의 전유물이 되어서는 안 된다고 믿습니다. AI Portal은 머신러닝, 확률 통계와 같은 기술적 요소를 직관적인 인터페이스로 풀어내어, 사용자들이 자연스럽게 최신 기술의 혜택을 누릴 수 있는 환경을 제공합니다.",
         about_services_title: "提供サービス",
         about_s1_title: "🤖 AI 動物顔分析",
-        about_s1_desc: "GoogleのTeachable Machineに基づいたモデルを使用し、似ている動物を探します。ローカル分析でプライバシーを保護します。",
-        about_s2_title: "🍀 スマートロト生成機",
-        about_s2_desc: "単純な生成を超え、統計データに基づいた最適な組み合わせのヒントを提供します。",
+        about_s1_desc: "Google의 Teachable Machine을 기반으로 제작된 이미지 분류 모델을 사용하여, 사용자의 외모적 특징을 분석하고 가장 닮은 동물을 찾아줍니다. 브라우저 내 로컬 분석으로 완벽한 프라이버시를 보장합니다.",
+        about_s2_title: "🍀 스마트 로또 생성기",
+        about_s2_desc: "단순한 번호 생성을 넘어, 확률적 통계 데이터를 기반으로 한 최적의 번호 조합 팁과 함께 무작위 번호 추출 기능을 제공합니다.",
         about_tech_title: "技術的透明性",
-        about_tech_desc: "オープンソース精神を大切にしています。TensorFlow.jsやTeachable Machineなどの信頼できるライブラリを使用しています。",
+        about_tech_desc: "AI Portal은 오픈소스 정신을 지향합니다. 본 서비스는 TensorFlow.js, Teachable Machine 등 신뢰할 수 있는 라이브러리를 활용하여 제작되었으며, 모든 데이터 처리는 투명하게 공개된 로직에 따라 수행됩니다.",
         about_back_btn: "メインツールを体験する",
         footer_text_vision: "© 2024 AI Portal Project. イノベーションを日常につなげます。",
         // Privacy Page
         privacy_head_title: "個人情報保護方針 - AI Portal",
         privacy_title: "個人情報保護方針",
-        privacy_p1: "本サイト(\"AI Portal\")は、ユーザーの個人情報を大切に扱い、関連法令を遵守します。",
+        privacy_p1: "本사이트(\"AI Portal\")는 사용자의 개인정보를 소중히 다루며, 관련 법령을 준수합니다.",
         privacy_h1: "1. 収集する個人情報",
-        privacy_p2: "個人を特定できる情報（氏名、連絡先など）は収集しません。Google AdSenseなどの第三者サービスがクッキーを使用する場合があります。",
+        privacy_p2: "본 사이트는 사용자의 직접적인 개인정보(이름, 연락처 등)를 별도로 저장하거나 수집하지 않습니다. 다만, 구글 애드센스 등 제3자 광고 서비스를 이용하는 경우 쿠키(Cookie)가 사용될 수 있습니다.",
         privacy_h2: "2. 利用目的",
-        privacy_p3: "収集された非個人情報は、サービスの改善、カスタマイズされた広告、統計分析に使用されます。",
+        privacy_p3: "수집된 비개인적 정보(쿠키 등)는 서비스 개선, 사용자 맞춤형 광고 제공, 통계 분석을 위해 사용됩니다.",
         privacy_h3: "3. 第三者サービス",
-        privacy_p4: "Googleなどはクッキーを使用して広告を配信します。Googleの広告設定でオプトアウトできます。",
+        privacy_p4: "Google을 포함한 제3자 제공업체는 쿠키를 사용하여 사용자의 이전 웹사이트 방문 기록을 토대로 광고를 게재합니다. 사용자는 구글의 광고 설정을 방문하여 맞춤설정 광고를 해제할 수 있습니다.",
         privacy_h4: "4. データセキュリティ",
-        privacy_p5: "画像はブラウザ上で即座に分析され、サーバーに送信または保存されることはありません。",
+        privacy_p5: "동물상 테스트를 위해 업로드되는 이미지는 브라우저 상에서 AI 모델(Teachable Machine)을 통해 즉시 분석되며, 서버로 전송되거나 저장되지 않습니다.",
         privacy_h5: "5. お問い合わせ",
-        privacy_p6: "個人情報に関するお問い合わせは、下部のお問い合わせフォームをご利用ください。",
+        privacy_p6: "개인정보 관련 문의사항은 하단의 제휴 문의 폼을 이용해 주시기 바랍니다.",
         privacy_back_btn: "ホームに戻る",
         footer_text_privacy: "© 2024 AI Portal Project. All rights reserved."
     },
@@ -248,10 +254,12 @@ const translations = {
         nav_lotto: "乐透生成器",
         nav_about: "网站介绍",
         nav_contact: "联系我们",
+        nav_blog: "知识中心",
         hero_title: "分析您的特征与好运的 AI 门户",
-        hero_subtitle: "体验由数据和人工智能带来的全新体验。",
+        hero_subtitle: "数据和人工智能带来的全新体验。",
         hero_btn_animal: "动物相测试",
-        hero_btn_lotto: "生成乐透号码",
+        hero_btn_lotto: "乐透号码生成",
+        hero_btn_blog: "AI知识中心",
         animal_title: "AI 动物相测试",
         animal_desc: "只需一张照片即可分析您的动物相！是犬系还是猫系？AI 为您精准分析。",
         upload_text: "点击上传您的照片",
@@ -355,29 +363,34 @@ if (langSelect) {
 // Theme Logic
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
-    body.setAttribute('data-theme', savedTheme);
-    themeBtn.textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+    if (body) body.setAttribute('data-theme', savedTheme);
+    if (themeBtn) themeBtn.textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
 }
 
-themeBtn.addEventListener('click', () => {
-    const currentTheme = body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    themeBtn.textContent = newTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
-});
+if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeBtn.textContent = newTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+    });
+}
 
 // Smooth Scroll for Navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            window.scrollTo({
-                top: target.offsetTop - 80,
-                behavior: 'smooth'
-            });
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
         }
     });
 });
@@ -442,7 +455,7 @@ async function loadModel() {
         const modelURL = ANIMAL_URL + "model.json";
         const metadataURL = ANIMAL_URL + "metadata.json";
         animalModel = await tmImage.load(modelURL, metadataURL);
-        animalMaxPredictions = animalModel.getTotalClasses();
+        if (animalModel) animalMaxPredictions = animalModel.getTotalClasses();
         if (loadingSpinner) loadingSpinner.style.display = 'none';
     } catch (e) {
         console.error("Model load failed", e);
@@ -451,6 +464,8 @@ async function loadModel() {
 }
 
 if (imageUpload) {
+    loadModel();
+
     imageUpload.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -477,27 +492,27 @@ async function predictAnimal() {
     if (!animalModel) return;
     
     const prediction = await animalModel.predict(previewImage);
-    labelContainer.innerHTML = '';
-    
-    prediction.sort((a, b) => b.probability - a.probability);
-
-    const lang = localStorage.getItem('lang') || 'ko';
-
-    prediction.forEach(p => {
-        const prob = (p.probability * 100).toFixed(0);
-        const item = document.createElement('div');
-        item.className = 'prediction-item';
-        item.style.marginBottom = '20px';
+    if (labelContainer) {
+        labelContainer.innerHTML = '';
         
-        item.innerHTML = `
-            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                <span style="font-weight: 700;">${p.className}</span>
-                <span style="font-weight: 700; color: var(--btn-bg);">${prob}%</span>
-            </div>
-            <div class="prob-bar" style="height: 12px; background: var(--number-border); border-radius: 6px; overflow: hidden;">
-                <div style="width: ${prob}%; height: 100%; background: linear-gradient(90deg, #6e8efb, #a777e3); transition: width 0.8s ease-out;"></div>
-            </div>
-        `;
-        labelContainer.appendChild(item);
-    });
+        prediction.sort((a, b) => b.probability - a.probability);
+
+        prediction.forEach(p => {
+            const prob = (p.probability * 100).toFixed(0);
+            const item = document.createElement('div');
+            item.className = 'prediction-item';
+            item.style.marginBottom = '20px';
+            
+            item.innerHTML = `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="font-weight: 700;">${p.className}</span>
+                    <span style="font-weight: 700; color: var(--btn-bg);">${prob}%</span>
+                </div>
+                <div class="prob-bar" style="height: 12px; background: var(--number-border); border-radius: 6px; overflow: hidden;">
+                    <div style="width: ${prob}%; height: 100%; background: linear-gradient(90deg, #6e8efb, #a777e3); transition: width 0.8s ease-out;"></div>
+                </div>
+            `;
+            labelContainer.appendChild(item);
+        });
+    }
 }

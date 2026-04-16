@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="로또 번호 선택의 수학적 근거와 확률적 분석을 제공합니다. 독립 시행과 대수의 법칙을 통해 로또의 원리를 이해하세요.">
+    <title>로또 확률의 수학적 분석: 독립 시행과 대수의 법칙 - AI Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "로또 확률의 수학적 분석: 독립 시행과 대수의 법칙",
+      "author": {
+        "@type": "Person",
+        "name": "AI Portal Editor"
+      },
+      "datePublished": "2024-04-16",
+      "description": "수학적 관점에서 바라본 로또 당첨 확률과 무작위 번호 생성의 원리"
+    }
+    </script>
+</head>
+<body data-theme="light">
+    <header>
+        <nav class="navbar">
+            <div class="logo"><a href="index.html">AI Portal</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html#animal-test">동물상 테스트</a></li>
+                <li><a href="index.html#lotto">로또 생성기</a></li>
+                <li><a href="about.html">사이트 소개</a></li>
+                <li><a href="#contact">문의</a></li>
+            </ul>
+            <div class="header-controls">
+                <select id="lang-select" class="lang-select">
+                    <option value="ko">Korean</option>
+                    <option value="en">English</option>
+                    <option value="ja">Japanese</option>
+                    <option value="zh">Chinese</option>
+                </select>
+                <div class="theme-toggle">
+                    <button id="theme-btn">Dark Mode</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container" style="margin-top: 120px; text-align: left; max-width: 900px;">
+        <article class="blog-post">
+            <div class="section-badge">Mathematics & Statistics</div>
+            <h1 style="font-size: 2.5rem; line-height: 1.2; margin-bottom: 20px;">로또 확률의 수학적 분석: 독립 시행과 대수의 법칙</h1>
+            <p style="color: #888; margin-bottom: 40px;">작성일: 2024년 4월 16일 | 작성자: AI Portal 데이터분석팀</p>
+
+            <section style="margin-bottom: 40px;">
+                <p>로또는 단순한 도박을 넘어 확률론과 통계학의 흥미로운 주제입니다. 매주 수많은 사람들이 일확천금을 꿈꾸며 번호를 선택하지만, 그 이면에 숨겨진 냉혹한 수학적 진실을 이해하는 사람은 많지 않습니다. 본 아티클에서는 로또 1등 당첨 확률의 계산 방식과 '무작위성'의 본질에 대해 수학적으로 접근해 보겠습니다.</p>
+            </section>
+
+            <section style="margin-bottom: 40px;">
+                <h2>1. 1/8,145,060의 의미</h2>
+                <p>대한민국 로또(6/45 방식)의 1등 당첨 확률은 약 814만 분의 1입니다. 이는 45개 중 6개를 순서에 상관없이 뽑는 조합(Combination) 공식인 <sub>45</sub>C<sub>6</sub>으로 계산됩니다.</p>
+                <p style="background: #f0f0f0; padding: 15px; border-radius: 8px; font-family: monospace; text-align: center;">(45 × 44 × 43 × 42 × 41 × 40) / (6 × 5 × 4 × 3 × 2 × 1) = 8,145,060</p>
+                <p>이 숫자가 얼마나 낮은 확률인지 체감하기 위해 예시를 들자면, 814만 개의 쌀알 중 단 한 알의 검은 쌀을 찾는 것과 같습니다. 수학적으로 볼 때, 모든 번호 조합은 당첨 확률이 정확히 동일합니다. 어제 나온 번호가 오늘 다시 나올 확률도, '1, 2, 3, 4, 5, 6'이 나올 확률도 여전히 1/8,145,060입니다.</p>
+            </section>
+
+            <section style="margin-bottom: 40px;">
+                <h2>2. 독립 시행의 법칙 (Independence)</h2>
+                <p>로또 분석에서 가장 흔히 저지르는 오류는 '도박사의 오류(Gambler's Fallacy)'입니다. "최근에 특정 번호가 많이 나왔으니 이번에는 안 나올 것이다" 혹은 "오랫동안 안 나왔으니 이번에는 나올 때가 됐다"는 생각입니다.</p>
+                <p>하지만 로또 추첨은 각 회차가 서로에게 아무런 영향을 주지 않는 '독립 시행'입니다. 기계 안의 공들은 이전 회차의 결과를 기억하지 못합니다. 따라서 과거 데이터를 바탕으로 미래를 예측하는 것은 수학적으로는 무의미합니다. AI Portal의 생성기가 매번 완전히 새로운 무작위 난수를 생성하는 이유도 바로 이 독립 시행의 원칙을 따르기 위함입니다.</p>
+            </section>
+
+            <section style="margin-bottom: 40px;">
+                <h2>3. 대수의 법칙 (Law of Large Numbers)</h2>
+                <p>그렇다면 통계 데이터는 전혀 가치가 없을까요? '대수의 법칙'에 따르면, 시행 횟수가 무한히 늘어날수록 각 번호가 추첨된 빈도는 결국 평균치에 수렴하게 됩니다. 장기적으로 볼 때 모든 번호는 균등하게 나타나겠지만, 수백 수천 회차의 데이터 정도로는 유의미한 편향을 찾아내기 어렵습니다.</p>
+                <p>다만, 번호를 선택할 때 '심리적 분산'은 유효한 전략이 될 수 있습니다. 수학적인 당첨 확률을 높일 수는 없지만, 당첨 시 수령액을 높일 수는 있기 때문입니다. 많은 사람이 선호하는 패턴(예: 생일 번호, 계단식 번호)을 피하면, 만약 당첨되었을 때 당첨금을 나누어 가질 확률이 줄어듭니다.</p>
+            </section>
+
+            <section style="margin-bottom: 40px;">
+                <h2>결론: 즐거운 통계, 건전한 행운</h2>
+                <p>로또 확률을 이해하는 것은 무모한 기대를 버리고 건전한 즐거움을 찾는 첫걸음입니다. 수학적 확률은 낮지만, 매주 작은 금액으로 행운을 기다리는 설렘은 일상의 활력이 될 수 있습니다. AI Portal은 이러한 객관적인 데이터를 바탕으로 사용자들이 보다 현명하고 즐겁게 서비스를 이용할 수 있도록 돕겠습니다.</p>
+            </section>
+        </article>
+
+        <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--number-border);">
+            <a href="index.html" class="main-btn" style="text-decoration: none;">메인으로 돌아가기</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 AI Portal Project. 데이터는 거짓말을 하지 않습니다.</p>
+            <div class="footer-links" style="margin-top: 15px;">
+                <a href="index.html">홈</a>
+                <a href="about.html">사이트 소개</a>
+                <a href="privacy.html">개인정보 처리방침</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
