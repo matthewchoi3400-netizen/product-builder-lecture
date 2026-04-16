@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AI Portal 프로젝트의 비전과 기술적 배경을 소개합니다. 혁신적인 AI 기술을 누구나 쉽게 경험할 수 있도록 돕는 것이 우리의 목표입니다.">
-    <title>사이트 소개 - AI Portal</title>
+    <title data-i18n="about_head_title">사이트 소개 - AI Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body data-theme="light">
@@ -12,59 +12,67 @@
         <nav class="navbar">
             <div class="logo"><a href="index.html">AI Portal</a></div>
             <ul class="nav-links">
-                <li><a href="index.html#animal-test">동물상 테스트</a></li>
-                <li><a href="index.html#lotto">로또 생성기</a></li>
-                <li><a href="about.html" class="active">사이트 소개</a></li>
-                <li><a href="index.html#contact">문의</a></li>
+                <li><a href="index.html#animal-test" data-i18n="nav_animal">동물상 테스트</a></li>
+                <li><a href="index.html#lotto" data-i18n="nav_lotto">로또 생성기</a></li>
+                <li><a href="about.html" class="active" data-i18n="nav_about">사이트 소개</a></li>
+                <li><a href="index.html#contact" data-i18n="nav_contact">문의</a></li>
             </ul>
-            <div class="theme-toggle">
-                <button id="theme-btn">Dark Mode</button>
+            <div class="header-controls">
+                <select id="lang-select" class="lang-select">
+                    <option value="ko">Korean</option>
+                    <option value="en">English</option>
+                    <option value="ja">Japanese</option>
+                    <option value="zh">Chinese</option>
+                </select>
+                <div class="theme-toggle">
+                    <button id="theme-btn">Dark Mode</button>
+                </div>
             </div>
         </nav>
     </header>
 
     <main style="padding-top: 100px;">
         <section class="container info-section">
-            <h1>프로젝트 소개</h1>
-            <p style="font-size: 1.2rem; margin-top: 1rem;"><strong>AI Portal</strong>은 복잡한 인공지능 기술을 일상 속에서 쉽고 재미있게 경험할 수 있도록 설계된 실험적 포털 사이트입니다.</p>
+            <h1 data-i18n="about_title">프로젝트 소개</h1>
+            <p style="font-size: 1.2rem; margin-top: 1rem;" data-i18n="about_subtitle"><strong>AI Portal</strong>은 복잡한 인공지능 기술을 일상 속에서 쉽고 재미있게 경험할 수 있도록 설계된 실험적 포털 사이트입니다.</p>
             
             <div style="margin-top: 40px;">
-                <h2>우리의 비전</h2>
-                <p>우리는 기술이 소수의 전문가들만의 전유물이 되어서는 안 된다고 믿습니다. AI Portal은 머신러닝, 확률 통계와 같은 기술적 요소를 직관적인 인터페이스로 풀어내어, 사용자들이 자연스럽게 최신 기술의 혜택을 누릴 수 있는 환경을 제공합니다.</p>
+                <h2 data-i18n="about_vision_title">우리의 비전</h2>
+                <p data-i18n="about_vision_desc">우리는 기술이 소수의 전문가들만의 전유물이 되어서는 안 된다고 믿습니다. AI Portal은 머신러닝, 확률 통계와 같은 기술적 요소를 직관적인 인터페이스로 풀어내어, 사용자들이 자연스럽게 최신 기술의 혜택을 누릴 수 있는 환경을 제공합니다.</p>
             </div>
 
             <div style="margin-top: 40px;">
-                <h2>제공 서비스</h2>
+                <h2 data-i18n="about_services_title">제공 서비스</h2>
                 <div class="info-grid">
                     <div class="info-item">
-                        <h3>🤖 AI 동물상 분석</h3>
-                        <p>Google의 Teachable Machine을 기반으로 제작된 이미지 분류 모델을 사용하여, 사용자의 외모적 특징을 분석하고 가장 닮은 동물을 찾아줍니다. 브라우저 내 로컬 분석으로 완벽한 프라이버시를 보장합니다.</p>
+                        <h3 data-i18n="about_s1_title">🤖 AI 동물상 분석</h3>
+                        <p data-i18n="about_s1_desc">Google의 Teachable Machine을 기반으로 제작된 이미지 분류 모델을 사용하여, 사용자의 외모적 특징을 분석하고 가장 닮은 동물을 찾아줍니다. 브라우저 내 로컬 분석으로 완벽한 프라이버시를 보장합니다.</p>
                     </div>
                     <div class="info-item">
-                        <h3>🍀 스마트 로또 생성기</h3>
-                        <p>단순한 번호 생성을 넘어, 확률적 통계 데이터를 기반으로 한 최적의 번호 조합 팁과 함께 무작위 번호 추출 기능을 제공합니다.</p>
+                        <h3 data-i18n="about_s2_title">🍀 스마트 로또 생성기</h3>
+                        <p data-i18n="about_s2_desc">단순한 번호 생성을 넘어, 확률적 통계 데이터를 기반으로 한 최적의 번호 조합 팁과 함께 무작위 번호 추출 기능을 제공합니다.</p>
                     </div>
                 </div>
             </div>
 
             <div style="margin-top: 40px;">
-                <h2>기술적 투명성</h2>
-                <p>AI Portal은 오픈소스 정신을 지향합니다. 본 서비스는 TensorFlow.js, Teachable Machine 등 신뢰할 수 있는 라이브러리를 활용하여 제작되었으며, 모든 데이터 처리는 투명하게 공개된 로직에 따라 수행됩니다.</p>
+                <h2 data-i18n="about_tech_title">기술적 투명성</h2>
+                <p data-i18n="about_tech_desc">AI Portal은 오픈소스 정신을 지향합니다. 본 서비스는 TensorFlow.js, Teachable Machine 등 신뢰할 수 있는 라이브러리를 활용하여 제작되었으며, 모든 데이터 처리는 투명하게 공개된 로직에 따라 수행됩니다.</p>
             </div>
 
             <div style="margin-top: 60px; text-align: center;">
-                <a href="index.html" class="main-btn" style="text-decoration: none;">메인 도구 체험하기</a>
+                <a href="index.html" class="main-btn" style="text-decoration: none;" data-i18n="about_back_btn">메인 도구 체험하기</a>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 AI Portal Project. 혁신을 일상으로 연결합니다.</p>
+            <p data-i18n="footer_text_vision">&copy; 2024 AI Portal Project. 혁신을 일상으로 연결합니다.</p>
             <div class="footer-links" style="margin-top: 15px;">
-                <a href="index.html">홈</a>
-                <a href="about.html">사이트 소개</a>
-                <a href="privacy.html">개인정보 처리방침</a>
+                <a href="index.html" data-i18n="footer_home">홈</a>
+                <a href="about.html" data-i18n="footer_about">사이트 소개</a>
+                <a href="privacy.html" data-i18n="footer_privacy">개인정보 처리방침</a>
             </div>
         </div>
     </footer>

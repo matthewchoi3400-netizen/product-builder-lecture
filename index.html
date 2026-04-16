@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AI 동물상 테스트와 로또 번호 생성기를 제공하는 프리미엄 AI 포털입니다. 인공지능 분석 원리와 로또 확률 통계를 상세히 설명하며 사용자에게 실질적인 가치를 제공합니다.">
     <meta name="keywords" content="AI 동물상 테스트, 로또 번호 생성기, Teachable Machine, 인공지능 관상, 로또 명당, 무료 AI 테스트">
-    <title>AI Portal - 동물상 테스트 & 로또 확률 분석</title>
+    <title data-i18n="head_title">AI Portal - 동물상 테스트 & 로또 확률 분석</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body data-theme="light">
@@ -13,39 +13,47 @@
         <nav class="navbar">
             <div class="logo"><a href="#home">AI Portal</a></div>
             <ul class="nav-links">
-                <li><a href="#animal-test">동물상 테스트</a></li>
-                <li><a href="#lotto">로또 생성기</a></li>
-                <li><a href="about.html">사이트 소개</a></li>
-                <li><a href="#contact">문의</a></li>
+                <li><a href="#animal-test" data-i18n="nav_animal">동물상 테스트</a></li>
+                <li><a href="#lotto" data-i18n="nav_lotto">로또 생성기</a></li>
+                <li><a href="about.html" data-i18n="nav_about">사이트 소개</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">문의</a></li>
             </ul>
-            <div class="theme-toggle">
-                <button id="theme-btn">Dark Mode</button>
+            <div class="header-controls">
+                <select id="lang-select" class="lang-select">
+                    <option value="ko">Korean</option>
+                    <option value="en">English</option>
+                    <option value="ja">Japanese</option>
+                    <option value="zh">Chinese</option>
+                </select>
+                <div class="theme-toggle">
+                    <button id="theme-btn">Dark Mode</button>
+                </div>
             </div>
         </nav>
     </header>
 
     <main id="home">
         <section class="hero">
-            <h1>당신의 특징과 행운을 분석하는 AI 포털</h1>
-            <p>데이터와 인공지능이 제안하는 새로운 경험을 만나보세요.</p>
+            <h1 data-i18n="hero_title">당신의 특징과 행운을 분석하는 AI 포털</h1>
+            <p data-i18n="hero_subtitle">데이터와 인공지능이 제안하는 새로운 경험을 만나보세요.</p>
             <div style="margin-top: 25px;">
-                <a href="#animal-test" class="main-btn" style="text-decoration: none; margin-right: 10px;">동물상 테스트</a>
-                <a href="#lotto" class="main-btn" style="text-decoration: none; background-color: transparent; border: 2px solid white;">로또 번호 생성</a>
+                <a href="#animal-test" class="main-btn" style="text-decoration: none; margin-right: 10px;" data-i18n="hero_btn_animal">동물상 테스트</a>
+                <a href="#lotto" class="main-btn" style="text-decoration: none; background-color: transparent; border: 2px solid white;" data-i18n="hero_btn_lotto">로또 번호 생성</a>
             </div>
         </section>
 
         <!-- AI Animal Test Section -->
         <section id="animal-test" class="container">
             <div class="section-badge">AI Technology</div>
-            <h2>AI 동물상 테스트</h2>
-            <p class="section-desc">사진 한 장으로 분석하는 나의 동물상! 강아지, 고양이 중 당신은 어떤 타입일까요? AI가 정밀하게 분석합니다.</p>
+            <h2 data-i18n="animal_title">AI 동물상 테스트</h2>
+            <p class="section-desc" data-i18n="animal_desc">사진 한 장으로 분석하는 나의 동물상! 강아지, 고양이 중 당신은 어떤 타입일까요? AI가 정밀하게 분석합니다.</p>
             
             <div class="upload-wrapper" style="margin: 30px 0;">
                 <input type="file" id="image-upload" accept="image/*" style="display: none;">
                 <div class="upload-box" onclick="document.getElementById('image-upload').click()">
                     <div id="upload-placeholder">
                         <span style="font-size: 3rem;">📸</span>
-                        <p>클릭하여 사진을 업로드하세요</p>
+                        <p data-i18n="upload_text">클릭하여 사진을 업로드하세요</p>
                     </div>
                     <img id="preview-image" src="#" alt="Preview" style="display: none; max-width: 100%; border-radius: 10px;">
                 </div>
@@ -53,26 +61,26 @@
             
             <div id="loading-spinner" style="display: none; margin: 20px 0;">
                 <div class="spinner"></div>
-                <p>AI가 분석 중입니다...</p>
+                <p data-i18n="loading_text">AI가 분석 중입니다...</p>
             </div>
             
             <div id="label-container"></div>
         </section>
 
         <section class="container info-section">
-            <h2>어떻게 분석되나요? (Deep Learning)</h2>
+            <h2 data-i18n="how_it_works_title">어떻게 분석되나요? (Deep Learning)</h2>
             <div class="info-grid">
                 <div class="info-item">
-                    <h3>1. 데이터 학습</h3>
-                    <p>수십만 장의 동물 사진 데이터를 CNN(합성곱 신경망) 알고리즘으로 사전 학습한 모델을 사용합니다.</p>
+                    <h3 data-i18n="how_1_title">1. 데이터 학습</h3>
+                    <p data-i18n="how_1_desc">수십만 장의 동물 사진 데이터를 CNN(합성곱 신경망) 알고리즘으로 사전 학습한 모델을 사용합니다.</p>
                 </div>
                 <div class="info-item">
-                    <h3>2. 특징 추출</h3>
-                    <p>업로드된 이미지에서 눈매, 턱선, 코의 각도 등 얼굴의 핵심 특징점을 실시간으로 추출합니다.</p>
+                    <h3 data-i18n="how_2_title">2. 특징 추출</h3>
+                    <p data-i18n="how_2_desc">업로드된 이미지에서 눈매, 턱선, 코의 각도 등 얼굴의 핵심 특징점을 실시간으로 추출합니다.</p>
                 </div>
                 <div class="info-item">
-                    <h3>3. 확률 매칭</h3>
-                    <p>학습된 데이터와 비교하여 가장 높은 일치율을 보이는 동물상을 퍼센트(%) 단위로 보여드립니다.</p>
+                    <h3 data-i18n="how_3_title">3. 확률 매칭</h3>
+                    <p data-i18n="how_3_desc">학습된 데이터와 비교하여 가장 높은 일치율을 보이는 동물상을 퍼센트(%) 단위로 보여드립니다.</p>
                 </div>
             </div>
         </section>
@@ -80,8 +88,8 @@
         <!-- Lotto Section -->
         <section id="lotto" class="container">
             <div class="section-badge">Probability</div>
-            <h2>스마트 로또 번호 생성기</h2>
-            <p class="section-desc">엄격한 난수 발생 알고리즘을 통해 추출된 행운의 6개 번호입니다. 매주 새로운 행운에 도전해보세요.</p>
+            <h2 data-i18n="lotto_title">스마트 로또 번호 생성기</h2>
+            <p class="section-desc" data-i18n="lotto_desc">엄격한 난수 발생 알고리즘을 통해 추출된 행운의 6개 번호입니다. 매주 새로운 행운에 도전해보세요.</p>
             
             <div class="lotto-numbers">
                 <span class="number">?</span>
@@ -91,50 +99,50 @@
                 <span class="number">?</span>
                 <span class="number">?</span>
             </div>
-            <button id="generate-btn" class="main-btn">행운의 번호 생성하기</button>
+            <button id="generate-btn" class="main-btn" data-i18n="lotto_btn">행운의 번호 생성하기</button>
         </section>
 
         <section class="container info-section">
-            <h2>로또 번호 선택 팁</h2>
+            <h2 data-i18n="lotto_tips_title">로또 번호 선택 팁</h2>
             <ul class="tip-list" style="text-align: left; padding-left: 20px;">
-                <li><strong>균형 있는 조합:</strong> 홀수와 짝수의 비율을 3:3 또는 2:4 정도로 섞는 것이 통계적으로 안정적입니다.</li>
-                <li><strong>연속 번호 피하기:</strong> 1, 2, 3처럼 3개 이상의 연속 번호가 나올 확률은 매우 낮습니다.</li>
-                <li><strong>총합의 범위:</strong> 선택한 6개 번호의 총합이 100에서 170 사이에 위치하는 경우가 가장 많습니다.</li>
+                <li data-i18n="lotto_tip_1"><strong>균형 있는 조합:</strong> 홀수와 짝수의 비율을 3:3 또는 2:4 정도로 섞는 것이 통계적으로 안정적입니다.</li>
+                <li data-i18n="lotto_tip_2"><strong>연속 번호 피하기:</strong> 1, 2, 3처럼 3개 이상의 연속 번호가 나올 확률은 매우 낮습니다.</li>
+                <li data-i18n="lotto_tip_3"><strong>총합의 범위:</strong> 선택한 6개 번호의 총합이 100에서 170 사이에 위치하는 경우가 가장 많습니다.</li>
             </ul>
         </section>
 
         <!-- FAQ Section for User Value -->
         <section id="faq" class="container">
-            <h2>자주 묻는 질문 (FAQ)</h2>
+            <h2 data-i18n="faq_title">자주 묻는 질문 (FAQ)</h2>
             <div class="faq-item" style="text-align: left; margin-top: 20px;">
-                <h3>Q. 사진 데이터는 안전하게 보호되나요?</h3>
-                <p>A. 네, 본 서비스는 브라우저 기반 AI를 사용합니다. 업로드하신 사진은 서버로 전송되지 않으며, 분석 즉시 메모리에서 삭제됩니다.</p>
+                <h3 data-i18n="faq_q1">Q. 사진 데이터는 안전하게 보호되나요?</h3>
+                <p data-i18n="faq_a1">A. 네, 본 서비스는 브라우저 기반 AI를 사용합니다. 업로드하신 사진은 서버로 전송되지 않으며, 분석 즉시 메모리에서 삭제됩니다.</p>
             </div>
             <div class="faq-item" style="text-align: left; margin-top: 20px;">
-                <h3>Q. 로또 번호 생성 알고리즘은 무엇인가요?</h3>
-                <p>A. JavaScript의 <code>Math.random()</code>을 기반으로 하되, 중복을 완벽히 제거한 1~45 사이의 난수를 생성합니다.</p>
+                <h3 data-i18n="faq_q2">Q. 로또 번호 생성 알고리즘은 무엇인가요?</h3>
+                <p data-i18n="faq_a2">A. JavaScript의 <code>Math.random()</code>을 기반으로 하되, 중복을 완벽히 제거한 1~45 사이의 난수를 생성합니다.</p>
             </div>
         </section>
 
         <section id="contact" class="container contact-section">
-            <h2>제휴 및 개선 제안</h2>
-            <p>여러분의 소중한 의견은 더 나은 서비스를 만드는 밑거름이 됩니다.</p>
+            <h2 data-i18n="contact_title">제휴 및 개선 제안</h2>
+            <p data-i18n="contact_desc">여러분의 소중한 의견은 더 나은 서비스를 만드는 밑거름이 됩니다.</p>
             <form action="https://formspree.io/f/mvzdzygg" method="POST" id="contact-form" style="margin-top: 25px;">
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="성함 또는 업체명" required>
+                    <input type="text" name="name" id="form-name" placeholder="성함 또는 업체명" data-i18n-placeholder="contact_placeholder_name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="답변 받으실 이메일 주소" required>
+                    <input type="email" name="email" id="form-email" placeholder="답변 받으실 이메일 주소" data-i18n-placeholder="contact_placeholder_email" required>
                 </div>
                 <div class="form-group">
-                    <textarea name="message" placeholder="제안하고 싶은 내용이나 불편사항을 적어주세요" required></textarea>
+                    <textarea name="message" id="form-message" placeholder="제안하고 싶은 내용이나 불편사항을 적어주세요" data-i18n-placeholder="contact_placeholder_message" required></textarea>
                 </div>
-                <button type="submit" id="submit-btn" class="main-btn" style="width: 100%;">문의 내용 전송하기</button>
+                <button type="submit" id="submit-btn" class="main-btn" style="width: 100%;" data-i18n="contact_btn">문의 내용 전송하기</button>
             </form>
         </section>
 
         <section class="container comment-section">
-            <h2>커뮤니티 피드백</h2>
+            <h2 data-i18n="comment_title">커뮤니티 피드백</h2>
             <div id="disqus_thread"></div>
         </section>
     </main>
@@ -143,12 +151,12 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 AI Portal Project. 고품질 정보와 도구를 제공합니다.</p>
+            <p data-i18n="footer_text">&copy; 2024 AI Portal Project. 고품질 정보와 도구를 제공합니다.</p>
             <div class="footer-links" style="margin-top: 15px;">
-                <a href="#home">홈</a>
-                <a href="about.html">사이트 소개</a>
-                <a href="privacy.html">개인정보 처리방침</a>
-                <a href="#contact">문의하기</a>
+                <a href="#home" data-i18n="footer_home">홈</a>
+                <a href="about.html" data-i18n="footer_about">사이트 소개</a>
+                <a href="privacy.html" data-i18n="footer_privacy">개인정보 처리방침</a>
+                <a href="#contact" data-i18n="footer_contact">문의하기</a>
             </div>
         </div>
     </footer>
