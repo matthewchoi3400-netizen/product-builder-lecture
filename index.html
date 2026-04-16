@@ -14,8 +14,15 @@
     <div class="container">
         <h1>AI 동물상 테스트</h1>
         <p>강아지상? 고양이상? AI가 분석해드립니다!</p>
-        <button type="button" id="start-webcam-btn" onclick="initAnimalTest()">카메라 시작하기</button>
-        <div id="webcam-container"></div>
+        
+        <div class="upload-section">
+            <input type="file" id="image-upload" accept="image/*" style="display: none;">
+            <button type="button" id="upload-btn" onclick="document.getElementById('image-upload').click()">사진 업로드하기</button>
+        </div>
+        
+        <div id="image-container">
+            <img id="preview-image" src="#" alt="Preview" style="display: none; max-width: 100%; border-radius: 15px; margin-top: 20px;">
+        </div>
         <div id="label-container"></div>
     </div>
 

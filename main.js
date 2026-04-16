@@ -2,6 +2,9 @@ const generateBtn = document.getElementById('generate-btn');
 const numberSpans = document.querySelectorAll('.number');
 const themeBtn = document.getElementById('theme-btn');
 const body = document.body;
+const imageUpload = document.getElementById('image-upload');
+const previewImage = document.getElementById('preview-image');
+const labelContainer = document.getElementById('label-container');
 
 // Theme Logic
 const savedTheme = localStorage.getItem('theme');
@@ -31,7 +34,6 @@ generateBtn.addEventListener('click', () => {
 
     numberSpans.forEach((span, index) => {
         span.classList.remove('active');
-        // Add a small delay for animation effect
         setTimeout(() => {
             span.textContent = sortedNumbers[index];
             span.style.transform = 'scale(1.1)';
@@ -44,40 +46,45 @@ generateBtn.addEventListener('click', () => {
 
 // Animal Face Test Logic (Teachable Machine)
 const ANIMAL_URL = "https://teachablemachine.withgoogle.com/models/2bWrPxNKA/";
-let animalModel, animalWebcam, animalLabelContainer, animalMaxPredictions;
+let animalModel, animalMaxPredictions;
 
-async function initAnimalTest() {
-    document.getElementById('start-webcam-btn').style.display = 'none';
+async function loadModel() {
     const modelURL = ANIMAL_URL + "model.json";
     const metadataURL = ANIMAL_URL + "metadata.json";
-
     animalModel = await tmImage.load(modelURL, metadataURL);
     animalMaxPredictions = animalModel.getTotalClasses();
-
-    const flip = true;
-    animalWebcam = new tmImage.Webcam(200, 200, flip);
-    await animalWebcam.setup();
-    await animalWebcam.play();
-    window.requestAnimationFrame(animalLoop);
-
-    document.getElementById("webcam-container").appendChild(animalWebcam.canvas);
-    animalLabelContainer = document.getElementById("label-container");
-    for (let i = 0; i < animalMaxPredictions; i++) {
-        animalLabelContainer.appendChild(document.createElement("div"));
-    }
 }
 
-async function animalLoop() {
-    animalWebcam.update();
-    await animalPredict();
-    window.requestAnimationFrame(animalLoop);
-}
+loadModel();
 
-async function animalPredict() {
-    const prediction = await animalModel.predict(animalWebcam.canvas);
+imageUpload.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+        previewImage.src = event.target.result;
+        previewImage.style.display = 'block';
+        
+        // Wait for image to load before predicting
+        previewImage.onload = async () => {
+            await predictAnimal();
+        };
+    };
+    reader.readAsDataURL(file);
+});
+
+async function predictAnimal() {
+    if (!animalModel) await loadModel();
+    
+    const prediction = await animalModel.predict(previewImage);
+    labelContainer.innerHTML = '';
+    
     for (let i = 0; i < animalMaxPredictions; i++) {
-        const classPrediction =
-            prediction[i].className + ": " + (prediction[i].probability * 100).toFixed(0) + "%";
-        animalLabelContainer.childNodes[i].innerHTML = classPrediction;
+        const prob = (prediction[i].probability * 100).toFixed(0);
+        const div = document.createElement('div');
+        div.style.margin = "5px 0";
+        div.innerHTML = `${prediction[i].className}: ${prob}%`;
+        labelContainer.appendChild(div);
     }
 }

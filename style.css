@@ -32,13 +32,9 @@ body {
     padding: 60px 0;
 }
 
-#webcam-container {
+#image-container {
     margin: 20px auto;
-    border-radius: 15px;
-    overflow: hidden;
-    width: 200px;
-    height: 200px;
-    border: 4px solid var(--number-border);
+    max-width: 300px;
 }
 
 #label-container {
@@ -47,7 +43,7 @@ body {
     font-weight: bold;
 }
 
-#start-webcam-btn {
+#upload-btn {
     padding: 12px 24px;
     font-size: 18px;
     cursor: pointer;
@@ -58,7 +54,7 @@ body {
     margin-bottom: 20px;
 }
 
-#start-webcam-btn:hover {
+#upload-btn:hover {
     filter: brightness(0.9);
 }
 
