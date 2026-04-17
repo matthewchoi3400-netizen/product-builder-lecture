@@ -526,12 +526,4 @@ async function predictAnimal() {
             labelContainer.appendChild(item);
         });
     }
-}              <div style="width: ${prob}%; height: 100%; background: linear-gradient(90deg, #6e8efb, #a777e3); transition: width 0.8s ease-out;"></div>
-                </div>
-            `;
-            labelContainer.appendChild(item);
-        });
-    }
-}
-    }
 }
