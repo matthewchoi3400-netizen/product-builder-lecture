@@ -365,7 +365,7 @@ if (ttsExecuteBtn) {
         ttsDownloadBtn.disabled = true;
 
         try {
-            const response = await fetch('http://114.108.167.199:9001/tts-api', {
+            const response = await fetch('https://api.vcall24.com/tts-api', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
