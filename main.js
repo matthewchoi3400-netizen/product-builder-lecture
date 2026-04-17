@@ -16,6 +16,14 @@ const ttsPlayBtn = document.getElementById('tts-play-btn');
 const ttsDownloadBtn = document.getElementById('tts-download-btn');
 const ttsStatus = document.getElementById('tts-status');
 const ttsAudio = document.getElementById('tts-audio');
+const ttsSpeedInput = document.getElementById('tts-speed');
+const ttsSpeedValueDisplay = document.getElementById('tts-speed-value');
+
+if (ttsSpeedInput) {
+    ttsSpeedInput.addEventListener('input', (e) => {
+        if (ttsSpeedValueDisplay) ttsSpeedValueDisplay.textContent = e.target.value;
+    });
+}
 
 let ttsAudioBlob = null;
 let ttsAudioUrl = null;
@@ -237,6 +245,7 @@ const translations = {
         tts_btn_execute: "执行TTS",
         tts_btn_play: "播放",
         tts_btn_download: "下载",
+        tts_speed_label: "速度:",
         tts_status_loading: "正在生成音频...",
         tts_status_success: "成功: 音频已就绪。",
         tts_status_error: "失败: 请检查服务器连接。",
@@ -522,5 +531,7 @@ async function predictAnimal() {
             `;
             labelContainer.appendChild(item);
         });
+    }
+}
     }
 }
