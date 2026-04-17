@@ -9,6 +9,17 @@ const loadingSpinner = document.getElementById('loading-spinner');
 const backToTop = document.getElementById('back-to-top');
 const langSelect = document.getElementById('lang-select');
 
+// Camera Elements
+const btnUploadMode = document.getElementById('btn-upload-mode');
+const btnCameraMode = document.getElementById('btn-camera-mode');
+const uploadArea = document.getElementById('upload-area');
+const cameraArea = document.getElementById('camera-area');
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const btnCapture = document.getElementById('btn-capture');
+
+let stream = null;
+
 // TTS Elements
 const ttsInput = document.getElementById('tts-input');
 const ttsExecuteBtn = document.getElementById('tts-execute-btn');
@@ -48,6 +59,9 @@ const translations = {
         animal_desc: "사진 한 장으로 분석하는 나의 동물상! 강아지, 고양이 중 당신은 어떤 타입일까요? AI가 정밀하게 분석합니다.",
         upload_text: "클릭하여 사진을 업로드하세요",
         loading_text: "AI가 분석 중입니다...",
+        btn_upload: "사진 업로드",
+        btn_camera: "카메라 촬영",
+        btn_capture: "📸 사진 찍기",
         how_it_works_title: "어떻게 분석되나요? (Deep Learning)",
         how_1_title: "1. 데이터 학습",
         how_1_desc: "수십만 장의 동물 사진 데이터를 CNN(합성곱 신경망) 알고리즘으로 사전 학습한 모델을 사용합니다.",
@@ -107,6 +121,9 @@ const translations = {
         animal_desc: "Analyze your face with just one photo! Find out your animal type with precision AI.",
         upload_text: "Click to upload your photo",
         loading_text: "AI is analyzing...",
+        btn_upload: "Upload Photo",
+        btn_camera: "Camera Capture",
+        btn_capture: "📸 Take Photo",
         how_it_works_title: "How does it work? (Deep Learning)",
         how_1_title: "1. Data Training",
         how_1_desc: "Pre-trained on animal photos using CNN algorithms.",
@@ -166,6 +183,9 @@ const translations = {
         animal_desc: "写真1枚で動物顔を分析！AIが精密に分析します。",
         upload_text: "写真をクリックしてアップロード",
         loading_text: "分析中...",
+        btn_upload: "写真をアップロード",
+        btn_camera: "カメラで撮影",
+        btn_capture: "📸 写真を撮る",
         how_it_works_title: "分析の仕組み",
         how_1_title: "1. 学習",
         how_1_desc: "CNNアルゴリズムで学習されたモデルを使用します。",
@@ -225,6 +245,9 @@ const translations = {
         animal_desc: "分析您的动物相！AI为您精准分析。",
         upload_text: "点击上传照片",
         loading_text: "分析中...",
+        btn_upload: "上传照片",
+        btn_camera: "相机拍摄",
+        btn_capture: "📸 拍照",
         how_it_works_title: "运作原理",
         how_1_title: "1. 训练",
         how_1_desc: "使用CNN算法预训练模型。",
@@ -240,7 +263,7 @@ const translations = {
         lotto_tip_2: "连续: 避免3个以上连续数字。",
         lotto_tip_3: "总和: 总和在100-170之间。",
         tts_title: "AI 语音转换 (TTS)",
-        tts_desc: "将文本转换为自然语音。生成WAV文件。",
+        tts_desc: "将文本转换为自然语音. 生成WAV文件。",
         tts_placeholder: "输入内容...",
         tts_btn_execute: "执行TTS",
         tts_btn_play: "播放",
@@ -348,6 +371,69 @@ if (backToTop) {
     backToTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+}
+
+// Mode Selection Logic
+if (btnUploadMode) {
+    btnUploadMode.addEventListener('click', () => {
+        uploadArea.style.display = 'block';
+        cameraArea.style.display = 'none';
+        stopCamera();
+    });
+}
+
+if (btnCameraMode) {
+    btnCameraMode.addEventListener('click', async () => {
+        uploadArea.style.display = 'none';
+        cameraArea.style.display = 'block';
+        await startCamera();
+    });
+}
+
+async function startCamera() {
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+        video.srcObject = stream;
+    } catch (err) {
+        console.error("Camera access failed", err);
+        const lang = localStorage.getItem('lang') || 'ko';
+        alert(lang === 'ko' ? "카메라에 접근할 수 없습니다." : "Cannot access camera.");
+    }
+}
+
+function stopCamera() {
+    if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+        stream = null;
+    }
+}
+
+if (btnCapture) {
+    btnCapture.addEventListener('click', () => {
+        const context = canvas.getContext('2d');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        
+        previewImage.src = canvas.toDataURL('image/png');
+        previewImage.style.display = 'block';
+        const placeholder = document.getElementById('upload-placeholder');
+        if (placeholder) placeholder.style.display = 'none';
+        
+        uploadArea.style.display = 'block';
+        cameraArea.style.display = 'none';
+        stopCamera();
+    });
+}
+
+// Common logic for preview image loading
+if (previewImage) {
+    previewImage.onload = async () => {
+        if (previewImage.src.includes('#')) return; // Ignore initial empty src
+        if (loadingSpinner) loadingSpinner.style.display = 'block';
+        await predictAnimal();
+        if (loadingSpinner) loadingSpinner.style.display = 'none';
+    };
 }
 
 // TTS Logic
@@ -487,12 +573,6 @@ if (imageUpload) {
             previewImage.style.display = 'block';
             const placeholder = document.getElementById('upload-placeholder');
             if (placeholder) placeholder.style.display = 'none';
-            
-            previewImage.onload = async () => {
-                if (loadingSpinner) loadingSpinner.style.display = 'block';
-                await predictAnimal();
-                if (loadingSpinner) loadingSpinner.style.display = 'none';
-            };
         };
         reader.readAsDataURL(file);
     });
