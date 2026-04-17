@@ -158,6 +158,12 @@
             <div class="tts-wrapper" style="text-align: left; margin-top: 30px;">
                 <textarea id="tts-input" class="form-group" style="width: 100%; height: 120px; padding: 15px; border-radius: 12px; border: 1px solid var(--number-border); background: var(--number-bg); color: var(--text-color); font-size: 1rem;" placeholder="변환할 내용을 입력하세요..." data-i18n-placeholder="tts_placeholder"></textarea>
                 
+                <div class="tts-settings" style="margin-top: 15px; display: flex; align-items: center; gap: 15px;">
+                    <label for="tts-speed" style="font-size: 0.9rem; font-weight: 600;" data-i18n="tts_speed_label">속도 (Speed):</label>
+                    <input type="range" id="tts-speed" min="50" max="200" value="100" style="flex: 1; cursor: pointer;">
+                    <span id="tts-speed-value" style="font-size: 0.9rem; font-weight: 600; min-width: 40px;">100</span>
+                </div>
+
                 <div class="tts-controls" style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
                     <button id="tts-execute-btn" class="main-btn" data-i18n="tts_btn_execute">TTS 실행</button>
                     <button id="tts-play-btn" class="main-btn" style="background-color: #4CAF50;" disabled data-i18n="tts_btn_play">Play</button>
